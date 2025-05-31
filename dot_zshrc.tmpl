@@ -39,7 +39,7 @@ for dir in \
   "$HOME/.local/share/JetBrains/Toolbox/scripts" \
 {{- if eq .chezmoi.os "darwin" }}
   "$HOME/.rustup/toolchains/stable-aarch64-apple-darwin/bin"
-{{ else if eq .chezmoi.os "linux" }}
+{{- else if eq .chezmoi.os "linux" }}
   "$HOME/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin"
 {{- end }}
 do
@@ -67,47 +67,6 @@ alias plasma='startplasma-wayland'
 {{- end }}
 
 # Functions
-dfd() {
-    pushd "$HOME/dotfiles" || return
-    git pull --rebase
-    ./dotfiles.sh
-    popd || return
-}
-
-dfe() {
-    pushd "$HOME/dotfiles" || return
-    nvim .
-    popd || return
-}
-
-dfu() {
-    pushd "$HOME/dotfiles" || return
-    git add .
-    git commit -m update
-    git push
-    popd || return
-}
-
-nvd() {
-    pushd "$HOME/.config/nvim" || return
-    git pull --rebase
-    popd || return
-}
-
-nve() {
-    pushd "$HOME/.config/nvim" || return
-    nvim .
-    popd || return
-}
-
-nvu() {
-    pushd "$HOME/.config/nvim" || return
-    git add .
-    git commit -m update
-    git push
-    popd || return
-}
-
 nvs() {
 {{- if eq .chezmoi.os "darwin" }}
     bash "$HOME/.config/nvim/setup/mac/setup.sh"
