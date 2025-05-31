@@ -1,0 +1,176 @@
+# Load and cache completions for quick startup
+autoload -Uz compinit && compinit -C
+
+# ZInit
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
+[ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+source "${ZINIT_HOME}/zinit.zsh"
+
+# Add in zsh plugins
+zinit light zsh-users/zsh-syntax-highlighting
+zinit light zsh-users/zsh-completions
+zinit light zsh-users/zsh-autosuggestions
+zinit light Aloxaf/fzf-tab
+
+# Add in snippets
+zinit snippet OMZP::git
+zinit snippet OMZP::sudo
+zinit snippet OMZP::aws
+zinit snippet OMZP::kubectl
+zinit snippet OMZP::kubectx
+{{- if eq .chezmoi.os "linux" }}
+zinit snippet OMZP::archlinux
+zinit snippet OMZP::command-not-found
+{{- end }}
+
+# Paths
+for dir in \
+  "$HOME/go/bin" \
+  "$HOME/.bun/bin" \
+  "$HOME/.cargo/bin" \
+  "$HOME/.dotnet" \
+  "$HOME/.dotnet/tools" \
+  "$HOME/.dotnet/roslyn" \
+  "$HOME/.dotnet/netcoredbg" \
+  "$HOME/.local/bin" \
+  "$HOME/.local/bin/codelldb/extension/adapter" \
+  "$HOME/.pulumi/bin" \
+  "$HOME/.local/share/JetBrains/Toolbox/scripts" \
+{{- if eq .chezmoi.os "darwin" }}
+  "$HOME/.rustup/toolchains/stable-aarch64-apple-darwin/bin"
+{{ else if eq .chezmoi.os "linux" }}
+  "$HOME/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin"
+{{- end }}
+do
+  [ -d "$dir" ] && export PATH="$PATH:$dir"
+done
+
+# Aliases
+alias awsl='aws sso login --sso-session rwwa'
+alias azl='az login --scope https://graph.microsoft.com/.default --allow-no-subscriptions'
+alias c='clear'
+alias grep='grep --color'
+alias lg='lazygit'
+alias ll='eza -lhg'
+alias lla='eza -alhg'
+alias ls='eza'
+alias n='nvim'
+alias q='exit'
+alias t='zellij'
+alias tree='eza --tree'
+{{- if eq .chezmoi.os "linux" }}
+alias hypr='Hyprland'
+alias hyprland='Hyprland'
+alias kde='startplasma-wayland'
+alias plasma='startplasma-wayland'
+{{- end }}
+
+# Functions
+dfd() {
+    pushd "$HOME/dotfiles" || return
+    git pull --rebase
+    ./dotfiles.sh
+    popd || return
+}
+
+dfe() {
+    pushd "$HOME/dotfiles" || return
+    nvim .
+    popd || return
+}
+
+dfu() {
+    pushd "$HOME/dotfiles" || return
+    git add .
+    git commit -m update
+    git push
+    popd || return
+}
+
+nvd() {
+    pushd "$HOME/.config/nvim" || return
+    git pull --rebase
+    popd || return
+}
+
+nve() {
+    pushd "$HOME/.config/nvim" || return
+    nvim .
+    popd || return
+}
+
+nvu() {
+    pushd "$HOME/.config/nvim" || return
+    git add .
+    git commit -m update
+    git push
+    popd || return
+}
+
+nvs() {
+{{- if eq .chezmoi.os "darwin" }}
+    bash "$HOME/.config/nvim/setup/mac/setup.sh"
+{{ else if eq .chezmoi.os "linux" }}
+    bash "$HOME/.config/nvim/setup/linux/setup_arch.sh"
+{{ else }}
+    echo "Unsupported platform"
+{{ end -}}
+}
+
+isoflash() {
+    if [[ -z "$1" ]]; then
+        echo "Usage: isoflash path/to/iso [drive] [block size]"
+        return 1
+    fi
+
+    local iso="$1"
+    if [[ ! -f "$iso" ]]; then
+        echo "Error: ISO file '$iso' not found"
+        return 1
+    fi
+
+    local drive="${2:-/dev/sda}"
+    # Verify the drive is a valid block device
+    if [[ ! -b "$drive" ]]; then
+        echo "Error: Drive '$drive' not found or is not a block device"
+        return 1
+    fi
+
+    local bs="${3:-1M}"
+    sudo dd if="$iso" of="$drive" bs="$bs" oflag=sync status=progress
+}
+
+# Integrations
+eval "$(atuin init zsh)"
+eval "$(fzf --zsh)"
+eval "$(zoxide init zsh)"
+eval "$(starship init zsh)"
+eval "$(jira completion zsh)"
+{{- if eq .chezmoi.os "darwin" }}
+eval "$(/opt/homebrew/bin/brew shellenv)"
+{{- end }}
+
+zinit cdreplay -q
+
+# Bindings
+bindkey -v
+bindkey '^p' history-search-backward
+bindkey '^n' history-search-forward
+bindkey '^[w' kill-region
+
+# History
+setopt appendhistory
+setopt sharehistory
+setopt hist_ignore_space
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
+
+# Completion styling
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':completion:*' menu no
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'

@@ -1,0 +1,8 @@
+[install.scopes."@capability-kit"]
+url = "https://pkgs.dev.azure.com/RWWA/_packaging/RWWA/npm/registry/"
+username = "{{ onepasswordRead "op://Work/Email - TAB/username" }}"
+password = "{{ onepasswordRead "op://Work/azure-devops/credential" }}"
+
+[install.scopes."@rwwa-shared-platform"]
+url = "https://npm.pkg.github.com"
+token = "{{ onepasswordRead "op://Work/github/token" }}"

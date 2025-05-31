@@ -1,0 +1,65 @@
+Include ~/.ssh/1Password/config
+
+Host *
+  Protocol 2
+  Compression yes
+  TCPKeepAlive yes
+  ServerAliveInterval 20
+  ServerAliveCountMax 10
+{{- if eq .chezmoi.os "darwin" }}
+  IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+{{ else if eq .chezmoi.os "linux" }}
+  IdentityAgent "~/.1password/agent.sock"
+{{- end }}
+
+Host desktop
+  HostName 192.168.11.254
+  User anon
+
+Host sara
+  HostName 192.168.11.196
+  User sara
+
+Host sara-root
+  HostName 192.168.11.196
+  User root
+
+Host truenas
+  HostName 192.168.11.10
+  User root
+
+Host arch
+  HostName 192.168.11.13
+  User anon
+
+Host nix
+  HostName 192.168.11.14
+  User anon
+
+Host aur.archlinux.org
+  User aur
+
+Host github.com
+  User git
+  ControlMaster auto
+  ControlPersist 120
+
+Host rwwa.github.com
+  HostName github.com
+  User git
+  ControlMaster auto
+  ControlPersist 120
+
+Host gitlab.com
+  HostName gitlab.com
+  User git
+
+Host surface
+  HostName 192.168.11.253
+  User {{ onepasswordRead "op://Work/Email - TAB/tabid" }}
+
+Host ssh.dev.azure.com
+  User git
+  PubkeyAcceptedKeyTypes +ssh-rsa
+  PasswordAuthentication no
+  ChallengeResponseAuthentication no
