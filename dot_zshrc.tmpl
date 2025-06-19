@@ -103,7 +103,6 @@ isoflash() {
 # Integrations
 {{- if eq .chezmoi.os "darwin" }}
 eval "$(/opt/homebrew/bin/brew shellenv)"
-eval "$(direnv hook zsh)"
 {{- end }}
 eval "$(atuin init zsh)"
 eval "$(fzf --zsh)"
