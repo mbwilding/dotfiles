@@ -7,6 +7,7 @@ signingkey = ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC2jIMaG8x0TS0fFLRkDNhju0DUJ2Y
 format = ssh
 
 [gpg "ssh"]
+allowedSignersFile = /home/anon/.config/git/allowed_signers
 {{ if eq .chezmoi.os "darwin" -}}
 program = "/applications/1password.app/contents/macos/op-ssh-sign"
 {{ else if eq .chezmoi.os "linux" -}}
