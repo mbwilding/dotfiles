@@ -1,0 +1,16 @@
+plugin_dirs = [
+    '/home/anon/.local/share/wineprefixes/audio/drive_c/Portable/Kontakt 8/Kontakt 8/x64/VST',
+    '/home/anon/.local/share/wineprefixes/audio/drive_c/Portable/Kontakt 8/Kontakt 8/x64/VST3',
+    '/home/anon/.local/share/wineprefixes/audio/drive_c/Program Files/Common Files/CLAP',
+    '/home/anon/.local/share/wineprefixes/audio/drive_c/Program Files/Common Files/VST3',
+    '/home/anon/.local/share/wineprefixes/audio/drive_c/Program Files/Steinberg/VSTPlugins',
+    '/home/anon/.local/share/wineprefixes/audio/drive_c/Program Files/VSTPlugins',
+    '/home/anon/.local/share/wineprefixes/audio/drive_c/Program Files (x86)/Line6/POD Farm 2/VST/Line 6',
+]
+vst2_location = 'centralized'
+no_verify = false
+blacklist = []
+
+[last_known_config]
+wine_version = 'wine-10.12'
+yabridge_host_hash = -2113593175909883720
