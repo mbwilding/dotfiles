@@ -46,7 +46,7 @@ do
   [ -d "$dir" ] && export PATH="$PATH:$dir"
 done
 
-# Aliases
+# Aliases/Funcs
 alias awsl='aws sso login --sso-session rwwa'
 alias azl='az login --scope https://graph.microsoft.com/.default --allow-no-subscriptions'
 alias c='clear'
@@ -64,6 +64,10 @@ alias hypr='Hyprland'
 alias hyprland='Hyprland'
 alias kde='startplasma-wayland'
 alias plasma='startplasma-wayland'
+wineaudio() {
+    local PATH=/opt/wines/wine-staging-9.21/usr/bin:$PATH
+    WINEPREFIX=/home/anon/.local/share/wineprefixes/audio wine "$@"
+}
 {{- end }}
 
 # Functions
