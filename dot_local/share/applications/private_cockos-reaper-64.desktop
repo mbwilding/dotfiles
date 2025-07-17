@@ -2,7 +2,7 @@
 Categories=Audio;Video;AudioVideo;AudioVideoEditing;Recorder;
 Comment=REAPER
 Encoding=UTF-8
-Exec=PATH=/opt/wines/wine-staging-9.21/usr/bin:$PATH; PIPEWIRE_LATENCY=64/44100 WINEPREFIX=/home/anon/.local/share/wineprefixes/audio /usr/bin/reaper %F
+Exec=PATH=/opt/wines/wine-staging-9.21/usr/bin:$PATH; PIPEWIRE_LATENCY=64/44100 WINEFSYNC=1 WINEPREFIX=/home/anon/.local/share/wineprefixes/audio /usr/bin/reaper %F
 Icon=cockos-reaper
 MimeType=application/x-reaper-project;application/x-reaper-project-backup;application/x-reaper-theme
 Name=REAPER 64
