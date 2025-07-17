@@ -82,7 +82,15 @@ wineaudiosync() {
 wineaudioreaper() {
     local winedir="/opt/wines/wine-staging-9.21/usr/bin"
     local wineprefix="$HOME/.local/share/wineprefixes/audio"
-    PATH="$winedir:$PATH" WINEPREFIX="$wineprefix" reaper
+    local buffer_size="${1:-128}"
+    local sample_rate="${2:-44100}"
+
+    if (( buffer_size < 64 || buffer_size > 1024 )); then
+        echo "Error: buffer_size ($buffer_size) must be between 32 and 1024" >&2
+        return 1
+    fi
+
+    PATH="$winedir:$PATH" WINEPREFIX="$wineprefix" PIPEWIRE_LATENCY="${buffer_size}/${sample_rate}" reaper
 }
 {{- end }}
 
