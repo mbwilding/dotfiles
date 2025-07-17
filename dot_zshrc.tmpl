@@ -64,13 +64,28 @@ alias hypr='Hyprland'
 alias hyprland='Hyprland'
 alias kde='startplasma-wayland'
 alias plasma='startplasma-wayland'
-wineaudio() {
-    local PATH=/opt/wines/wine-staging-9.21/usr/bin:$PATH
-    WINEPREFIX=/home/anon/.local/share/wineprefixes/audio wine "$@"
-}
 {{- end }}
 
 # Functions
+{{- if eq .chezmoi.os "linux" }}
+wineaudio() {
+    local wineprefix="$HOME/.local/share/wineprefixes/audio"
+    WINEPREFIX="$wineprefix" wine "$@"
+}
+
+wineaudiosync() {
+    local winedir="/opt/wines/wine-staging-9.21/usr/bin"
+    local wineprefix="$HOME/.local/share/wineprefixes/audio"
+    PATH="$winedir:$PATH" WINEPREFIX="$wineprefix" yabridgectl sync --prune
+}
+
+wineaudioreaper() {
+    local winedir="/opt/wines/wine-staging-9.21/usr/bin"
+    local wineprefix="$HOME/.local/share/wineprefixes/audio"
+    PATH="$winedir:$PATH" WINEPREFIX="$wineprefix" reaper
+}
+{{- end }}
+
 nvs() {
 {{- if eq .chezmoi.os "darwin" }}
     bash "$HOME/.config/nvim/setup/mac/setup.sh"
