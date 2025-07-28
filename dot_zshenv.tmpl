@@ -17,7 +17,7 @@ export PIPEWIRE_LATENCY="64/44100"
 export WINEFSYNC=1
 {{- end }}
 export ADO_PAT="{{ onepasswordRead "op://Work/azure-devops/credential" }}"
-# export AWS_PROFILE="md"
+export AWS_PROFILE="md"
 export AWS_REGION="ap-southeast-2"
 export AZP_TOKEN="{{ onepasswordRead "op://Work/azure-devops/credential" }}"
 export CARGO_REGISTRY_TOKEN="{{ onepasswordRead "op://Personal/cargo/token" }}"
