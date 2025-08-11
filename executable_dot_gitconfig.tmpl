@@ -38,6 +38,9 @@ defaultBranch = main
 [core]
 editor = nvim
 autocrlf = false
+{{ if (and (ne .chezmoi.os "linux") (ne .chezmoi.os "darwin")) }}
+sshCommand = C:/Windows/System32/OpenSSH/ssh.exe
+{{- end }}
 
 [push]
 autoSetupRemote = true
