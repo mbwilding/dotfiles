@@ -97,6 +97,29 @@ wineaudioreaper() {
 }
 {{- end }}
 
+cleanlocks() {
+  find . -type f \
+    \( \
+      -name 'package-lock.json' \
+      -o -name 'packages.lock.json' \
+      -o -name 'bun.lock' \
+      -o -name 'bun.lockb' \
+      -o -name 'yarn.lock' \
+      -o -name 'pnpm-lock.yaml' \
+      -o -name 'composer.lock' \
+      -o -name 'Cargo.lock' \
+      -o -name 'Gemfile.lock' \
+      -o -name 'Pipfile.lock' \
+      -o -name 'poetry.lock' \
+      -o -name 'go.sum' \
+      -o -name 'pubspec.lock' \
+      -o -name 'mix.lock' \
+      -o -name 'requirements.lock' \
+    \) -exec rm -f {} +
+
+  echo "All known lock files deleted recursively"
+}
+
 nvs() {
 {{- if eq .chezmoi.os "darwin" }}
     bash "$HOME/.config/nvim/setup/mac/setup.sh"
