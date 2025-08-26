@@ -151,6 +151,21 @@ isoflash() {
 
     local bs="${3:-1M}"
     sudo dd if="$iso" of="$drive" bs="$bs" oflag=sync status=progress
+
+}
+
+sln() {
+    if [[ -z "$1" ]]; then
+        echo "Provide SLN name"
+        return 1
+    fi
+
+    local name="$1"
+    dotnet new sln -n "$name"
+
+    find . -type f -name "*.csproj" | while read proj; do
+        dotnet sln "$name.sln" add "$proj"
+    done
 }
 
 # Integrations
