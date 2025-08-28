@@ -12,13 +12,13 @@ set idearefactormode=keep
 set nocursorline
 
 " Plug "machakann/vim-highlightedyank"
-" Plug "tpope/vim-commentary"
+ Plug "tpope/vim-commentary"
 " Plug "easymotion/vim-easymotion"
 Plug "preservim/nerdtree"
 
 " set sneak
 " set easymotion
-" set commentary
+set commentary
 set NERDTree
 
 " g:EasyMotion_startofline 0
