@@ -38,15 +38,24 @@ defaultBranch = main
 [core]
 editor = nvim
 autocrlf = false
+pager = delta
 {{ if (and (ne .chezmoi.os "linux") (ne .chezmoi.os "darwin")) }}
 sshCommand = C:/Windows/System32/OpenSSH/ssh.exe
 {{- end }}
 
+[interactive]
+diffFilter = delta --color-only
+
 [push]
 autoSetupRemote = true
 
+[delta]
+navigate = true  # use n and N to move between diff sections
+dark = true
+side-by-side = true
+
 [merge]
-tool = diffview
+conflictStyle = zdiff3
 
 [mergetool]
 prompt = false
