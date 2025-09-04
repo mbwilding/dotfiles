@@ -1,0 +1,23 @@
+{{- if ne .chezmoi.os "linux" }}
+.clap
+.config/chrome-flags.conf
+.config/hypr
+.config/klassy
+.config/kwinrulesrc
+.config/mpv
+.config/pipewire
+.config/steamtinkerlaunch
+.config/sunshine
+.config/waybar
+.config/yabridgectl
+mount.sh
+{{ else if ne .chezmoi.os "darwin" }}
+.config/aerospace
+.config/karabiner
+.config/starship.toml
+.config/yabai
+.hammerspoon
+.hushlogin
+.vst
+.vst3
+{{- end }}
