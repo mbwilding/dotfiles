@@ -10,6 +10,7 @@
 .config/sunshine
 .config/waybar
 .config/yabridgectl
+.credentials
 mount.sh
 {{- end }}
 
