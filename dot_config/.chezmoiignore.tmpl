@@ -1,0 +1,19 @@
+{{- if ne .chezmoi.os "linux" }}
+chrome-flags.conf
+hypr
+klassy
+kwinrulesrc
+mpv
+pipewire
+steamtinkerlaunch
+sunshine
+waybar
+yabridgectl
+{{- end }}
+
+{{- if ne .chezmoi.os "darwin" }}
+aerospace
+karabiner
+starship.toml
+yabai
+{{- end }}
