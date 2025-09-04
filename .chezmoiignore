@@ -11,7 +11,9 @@
 .config/waybar
 .config/yabridgectl
 mount.sh
-{{ else if ne .chezmoi.os "darwin" }}
+{{- end }}
+
+{{- if ne .chezmoi.os "darwin" }}
 .config/aerospace
 .config/karabiner
 .config/starship.toml
