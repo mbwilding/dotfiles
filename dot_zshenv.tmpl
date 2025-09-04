@@ -22,8 +22,6 @@ export JIRA_USER="{{ onepasswordRead "op://Work/Email - TAB/username" }}"
 export OPENAI_API_KEY="{{ onepasswordRead "op://Personal/openai/api key" }}"
 export PULUMI_ACCESS_TOKEN="{{ onepasswordRead "op://Personal/pulumi/token" }}"
 export RUST_LOG="info"
-export SOLAR_EDGE_SITE_ID="4620790"
-export SOLAR_EDGE_TOKEN="{{ onepasswordRead "op://Personal/solar-edge/credential" }}"
 export ELEVENLABS_API_KEY="{{ onepasswordRead "op://Personal/ElevenLabs/token" }}"
 export DYNAMICS_URL="{{ onepasswordRead "op://Work/Dynamics/dev_url" }}"
 export DYNAMICS_CLIENT_ID="{{ onepasswordRead "op://Work/Dynamics/dev_client_id" }}"
@@ -39,6 +37,7 @@ export WINEFSYNC=1
 export DXVK_HDR=1
 export PROTON_ENABLE_HDR=1
 export PROTON_ENABLE_WAYLAND=1
+export PROTON_USE_NTSYNC=1
 {{- if eq .chezmoi.hostname "nona" }}
 export VDPAU_DRIVER="radeonsi"
 export LIBVA_DRIVER_NAME="radeonsi"
