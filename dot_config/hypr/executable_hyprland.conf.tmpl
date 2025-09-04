@@ -44,8 +44,7 @@ monitorv2 {
   scale = 1
   transform = 3
 }
-{{- end }}
-{{- if eq .chezmoi.hostname "nona" }}
+{{ else if eq .chezmoi.hostname "nona" }}
 monitorv2 {
   output = DP-1
   mode = 2944x1840@90
