@@ -6,6 +6,9 @@ Host *
   TCPKeepAlive yes
   ServerAliveInterval 20
   ServerAliveCountMax 10
+  ForwardAgent yes
+
+Match host * exec "test -z $SSH_TTY"
 {{- if eq .chezmoi.os "darwin" }}
   IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
 {{ else if eq .chezmoi.os "linux" }}

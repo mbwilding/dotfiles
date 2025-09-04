@@ -8,7 +8,7 @@ ecosystem {
 ################
 
 # See https://wiki.hypr.land/Configuring/Monitors/#monitor-v2
-
+{{- if eq .chezmoi.hostname "anon" }}
 monitorv2 {
   output = DP-3
   mode = 3840x2160@120
@@ -19,7 +19,7 @@ monitorv2 {
   cm = edid
   sdrbrightness = 0.9
   sdrsaturation = 1.25
-  vrr = 0
+  vrr = 1
   supports_wide_color = 1
   supports_hdr = 1
   sdr_min_luminance = 0.005
@@ -44,6 +44,28 @@ monitorv2 {
   scale = 1
   transform = 3
 }
+{{- end }}
+{{- if eq .chezmoi.hostname "nona" }}
+monitorv2 {
+  output = DP-1
+  mode = 2944x1840@90
+  position = 0x0
+  scale = 1
+  transform = 0
+  bitdepth = 10
+  cm = edid
+  sdrbrightness = 0.9
+  sdrsaturation = 1.25
+  vrr = 1
+  supports_wide_color = 1
+  supports_hdr = 1
+  sdr_min_luminance = 0.005
+  sdr_max_luminance = 400
+  min_luminance = 0
+  max_luminance = 1000
+  max_avg_luminance = 300
+}
+{{- end }}
 
 ##################
 ### WORKSPACES ###
