@@ -1,0 +1,70 @@
+{
+  "bar.customModules.storage.paths": [
+    "/"
+  ],
+  "theme.bar.floating": false,
+  "theme.bar.location": "top",
+  "bar.autoHide": "fullscreen",
+  "theme.bar.border.location": "none",
+  "theme.bar.enableShadow": false,
+  "theme.bar.buttons.enableBorders": false,
+  "theme.bar.buttons.windowtitle.enableBorder": false,
+  "bar.network.label": true,
+  "bar.network.showWifiInfo": true,
+  "bar.clock.showTime": true,
+  "bar.layouts": {
+    "0": {},
+    "1": {},
+    "2": {
+      "left": [
+        "dashboard",
+        "workspaces",
+        "windowtitle"
+      ],
+      "middle": [
+        "media"
+      ],
+      "right": [
+        "volume",
+        "network",
+        "bluetooth",
+        "battery",
+        "systray",
+        "clock",
+        "notifications"
+      ]
+    }
+  },
+  "bar.battery.hideLabelWhenFull": false,
+  "menus.power.showLabel": true,
+  "menus.power.lowBatteryNotification": true,
+  "menus.clock.time.military": true,
+  "menus.clock.time.hideSeconds": false,
+  "bar.clock.showIcon": true,
+  "theme.bar.menus.enableShadow": false,
+  "menus.media.hideAuthor": false,
+  "menus.media.hideAlbum": false,
+  "menus.dashboard.shortcuts.left.shortcut1.command": "google-chorme-stable",
+  "menus.dashboard.shortcuts.left.shortcut1.tooltip": "Chrome",
+  "menus.dashboard.shortcuts.left.shortcut1.icon": "",
+  "menus.dashboard.shortcuts.left.shortcut2.command": "spotify",
+  "wallpaper.enable": true,
+  "theme.bar.menus.background": "#11111b",
+  "theme.bar.menus.cards": "#1e1e2e",
+  "theme.bar.menus.border.color": "#313244",
+  "theme.bar.transparent": true,
+  "theme.bar.background": "#11111b",
+  "theme.bar.buttons.background": "#242438",
+  "theme.bar.buttons.icon_background": "#242438",
+  "theme.bar.buttons.dashboard.background": "#242438",
+  "bar.workspaces.show_icons": false,
+  "bar.workspaces.show_numbered": true,
+  "bar.workspaces.workspaceMask": true,
+  "theme.bar.margin_top": "0em",
+  "theme.bar.layer": "top",
+  "theme.bar.outer_spacing": "0.4em",
+  "theme.bar.border_radius": "0.4em",
+  "theme.bar.buttons.y_margins": "0.4em",
+  "theme.bar.margin_bottom": "0em",
+  "theme.bar.margin_sides": "0em"
+}
