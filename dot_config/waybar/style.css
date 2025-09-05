@@ -11,9 +11,9 @@
 }
 
 window#waybar {
-    background-color: rgba(0, 0, 0, 0.9);
+    background-color: rgba(0, 0, 0, 0.0);
     /* border-bottom: 3px solid rgba(100, 114, 125, 0.5); */
-    color: #ffffff;
+    color: #181818;
     /* transition-property: background-color; */
     /* transition-duration: .5s; */
     /* border-radius: 0; */
@@ -83,7 +83,7 @@ window#waybar.chromium {
 #idle_inhibitor,
 #mpd {
     padding: 0 10px;
-    margin: 6px 3px; 
+    margin: 6px 3px;
     color: #000000;
 }
 

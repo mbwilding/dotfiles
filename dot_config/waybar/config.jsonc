@@ -2,7 +2,7 @@
 {
     "mode": "dock", // Dock mode
     // "layer": "top", // Waybar at top layer
-     "position": "bottom", // Waybar position (top|bottom|left|right)
+    "position": "top", // Waybar position (top|bottom|left|right)
     "height": 5, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
     // Choose the order of the modules
@@ -66,16 +66,16 @@
         "spacing": 10
     },
     "clock": {
-        "format": "{:%I:%M }",
-        "format-alt": "{:%Y-%m-%d}"
-
+        "format": "{:%I:%M :%Y-%m-%d}",
+        "format-alt": "{:%I:%M :%Y-%m-%d}"
     },
     "cpu": {
         "format": "{usage}% ",
-        "tooltip": false
+        "tooltip": true
     },
     "memory": {
-        "format": "{}% "
+        "format": "{}% ",
+        "tooltip": true
     },
     "temperature": {
         // "thermal-zone": 2,
