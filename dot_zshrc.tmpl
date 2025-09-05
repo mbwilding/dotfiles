@@ -70,6 +70,11 @@ alias wnvim='WINEDEBUG=-all wine nvim'
 
 # Functions
 {{- if eq .chezmoi.os "linux" }}
+rwaybar() {
+    killall waybar &>/dev/null
+    setsid waybar >/dev/null 2>&1 < /dev/null &
+}
+
 wineaudio() {
     local winedir="/opt/wines/wine-staging-9.21/usr/bin"
     local wineprefix="$HOME/.local/share/wineprefixes/audio"
