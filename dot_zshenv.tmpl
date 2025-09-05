@@ -40,11 +40,13 @@ export PROTON_USE_NTSYNC=1
 {{- if eq .chezmoi.hostname "nona" }}
 export VDPAU_DRIVER="radeonsi"
 export LIBVA_DRIVER_NAME="radeonsi"
+export WAYLANDDRV_PRIMARY_MONITOR=DP-1
 {{- end }}
 {{- if eq .chezmoi.hostname "anon" }}
 export ENABLE_HDR_WSI=1
 export VDPAU_DRIVER="nvidia"
 export LIBVA_DRIVER_NAME="nvidia"
+export WAYLANDDRV_PRIMARY_MONITOR=DP-3
 {{- end }}
 if [ -z "$SSH_AUTH_SOCK" ]; then
   export SSH_AUTH_SOCK="$HOME/.1password/agent.sock"
