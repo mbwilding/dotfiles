@@ -1,0 +1,10 @@
+# System
+exec-once = nm-applet
+exec-once = hyprpaper
+exec-once = waybar
+{{- if eq .chezmoi.hostname "anon" }}
+# Applications
+exec-once = teams-for-linux
+exec-once = discord
+exec-once = spotify
+{{- end }}
