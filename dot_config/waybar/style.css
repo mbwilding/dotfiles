@@ -2,7 +2,7 @@
     border: none;
     border-radius: 4px;
     /* `ttf-font-awesome` is required to be installed for icons */
-    font-family: "Roboto Mono Medium", Helvetica, Arial, sans-serif;
+    font-family: "Jetbrains Mono", Helvetica, Arial, sans-serif;
 
     /* adjust font-size value to your liking: */
     font-size: 10px;
@@ -13,7 +13,7 @@
 window#waybar {
     background-color: rgba(0, 0, 0, 0.0);
     /* border-bottom: 3px solid rgba(100, 114, 125, 0.5); */
-    color: #181818;
+    color: rgba(0, 0, 0, 0.0);
     /* transition-property: background-color; */
     /* transition-duration: .5s; */
     /* border-radius: 0; */
@@ -156,7 +156,6 @@ label:focus {
 #network {
     background-color: #000000;
     color:white;
-
 }
 
 #network.disconnected {
