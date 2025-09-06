@@ -13,9 +13,14 @@
   "bar.network.showWifiInfo": true,
   "bar.clock.showTime": true,
   "bar.layouts": {
+{{- if eq .chezmoi.hostname "anon" }}
     "0": {},
     "1": {},
     "2": {
+{{- end }}
+{{- if eq .chezmoi.hostname "nona" }}
+    "0": {
+{{- end }}
       "left": [
         "dashboard",
         "workspaces",
