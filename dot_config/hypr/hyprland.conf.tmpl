@@ -1,10 +1,10 @@
-source = ~/.config/hypr/settings.conf
-source = ~/.config/hypr/env.conf
-source = ~/.config/hypr/display.conf
-source = ~/.config/hypr/input.conf
-source = ~/.config/hypr/bind.conf
+source = ~/.config/hypr/modules/settings.conf
+source = ~/.config/hypr/modules/envvars.conf
+source = ~/.config/hypr/modules/display.conf
+source = ~/.config/hypr/modules/input.conf
+source = ~/.config/hypr/modules/keybinds.conf
 {{- if eq .chezmoi.hostname "anon" }}
-source = ~/.config/hypr/workspace.conf
+source = ~/.config/hypr/modules/workspaces.conf
 {{- end }}
-source = ~/.config/hypr/animations.conf
-source = ~/.config/hypr/start.conf
+source = ~/.config/hypr/modules/animations.conf
+source = ~/.config/hypr/modules/startup.conf
