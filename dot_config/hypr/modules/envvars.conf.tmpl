@@ -6,6 +6,9 @@ env = QT_QPA_PLATFORM,wayland;xcb
 env = QT_QPA_PLATFORMTHEME,qt6ct
 env = SDL_VIDEODRIVER,wayland
 env = XCURSOR_SIZE,24
+env = XDG_CURRENT_DESKTOP,Hyprland
+env = XDG_SESSION_DESKTOP,Hyprland
+env = XDG_SESSION_TYPE,wayland
 {{- if eq .chezmoi.hostname "anon" }}
 env = ENABLE_HDR_WSI,1
 env = GBM_BACKEND,nvidia-drm
