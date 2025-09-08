@@ -10,3 +10,7 @@ exec-once = teams-for-linux
 exec-once = discord
 exec-once = spotify
 {{- end }}
+{{- if eq .chezmoi.hostname "nona" }}
+# Fixes
+brightnessctl set --device=platform::micmute 0
+{{- end }}
