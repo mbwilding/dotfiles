@@ -12,5 +12,5 @@ exec-once = spotify
 {{- end }}
 {{- if eq .chezmoi.hostname "nona" }}
 # Fixes
-brightnessctl set --device=platform::micmute 0
+exec-once = brightnessctl set --device=platform::micmute 0
 {{- end }}
