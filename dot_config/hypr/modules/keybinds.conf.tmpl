@@ -27,16 +27,16 @@ bind = $mainMod, j, movefocus, d
 
 # Switch workspaces with mainMod + [0-9]
 {{- if eq .chezmoi.hostname "anon" }}
-bind = $mainMod, 1,  exec, hyprctl dispatch workspace 1,  monitor:DP-3
-bind = $mainMod, 2,  exec, hyprctl dispatch workspace 2,  monitor:DP-3
-bind = $mainMod, 3,  exec, hyprctl dispatch workspace 3,  monitor:DP-3
-bind = $mainMod, 4,  exec, hyprctl dispatch workspace 4,  monitor:DP-3
-bind = $mainMod, 5,  exec, hyprctl dispatch workspace 5,  monitor:DP-3
-bind = $mainMod, 6,  exec, hyprctl dispatch workspace 6,  monitor:DP-3
-bind = $mainMod, 7,  exec, hyprctl dispatch workspace 7,  monitor:DP-3
-bind = $mainMod, 8,  exec, hyprctl dispatch workspace 8,  monitor:DP-3
-bind = $mainMod, 9,  exec, hyprctl dispatch workspace 9,  monitor:DP-3
-bind = $mainMod, 10, exec, hyprctl dispatch workspace 10, monitor:DP-3
+bind = $mainMod, 1, exec, hyprctl dispatch workspace 1,  monitor:DP-3
+bind = $mainMod, 2, exec, hyprctl dispatch workspace 2,  monitor:DP-3
+bind = $mainMod, 3, exec, hyprctl dispatch workspace 3,  monitor:DP-3
+bind = $mainMod, 4, exec, hyprctl dispatch workspace 4,  monitor:DP-3
+bind = $mainMod, 5, exec, hyprctl dispatch workspace 5,  monitor:DP-3
+bind = $mainMod, 6, exec, hyprctl dispatch workspace 6,  monitor:DP-3
+bind = $mainMod, 7, exec, hyprctl dispatch workspace 7,  monitor:DP-3
+bind = $mainMod, 8, exec, hyprctl dispatch workspace 8,  monitor:DP-3
+bind = $mainMod, 9, exec, hyprctl dispatch workspace 9,  monitor:DP-3
+bind = $mainMod, 0, exec, hyprctl dispatch workspace 10, monitor:DP-3
 {{- end }}
 {{- if eq .chezmoi.hostname "nona" }}
 bind = $mainMod, 1, workspace, 1
