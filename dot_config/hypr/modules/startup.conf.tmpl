@@ -2,9 +2,6 @@
 exec-once = nm-applet
 exec-once = hyprpaper
 exec-once = hyprpanel
-# Defaults
-exec = gsettings set org.gnome.desktop.interface gtk-theme "Breeze-Dark"
-exec = gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
 # Screen sharing
 exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 {{- if eq .chezmoi.hostname "anon" }}
