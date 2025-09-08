@@ -23,6 +23,9 @@
 {{- end }}
       "left": [
         "dashboard",
+{{- if eq .chezmoi.hostname "nona" }}
+        "workspaces",
+{{- end }}
         "windowtitle"
       ],
       "middle": [
