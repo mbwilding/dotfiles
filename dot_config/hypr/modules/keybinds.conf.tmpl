@@ -16,6 +16,7 @@ bind = $mainMod, N, exec, neovide
 bind = $mainMod, grave, exit,
 bind = $mainMod, Q, killactive,
 bind = $mainMod, F, togglefloating,
+bind = $mainMod, X, exec, if [[ -z $(hyprpanel --list) ]]; then hyprpanel; else hyprpanel --quit; fi
 # bind = $mainMod, P, pseudo, # dwindle
 # bind = $mainMod, J, togglesplit, # dwindle
 
