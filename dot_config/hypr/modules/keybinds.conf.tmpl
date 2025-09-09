@@ -16,6 +16,7 @@ bind = $mainMod, N, exec, neovide
 bind = $mainMod, grave, exit,
 bind = $mainMod, Q, killactive,
 bind = $mainMod, F, togglefloating,
+bind = $mainMod, Z, exec, hyprlock
 bind = $mainMod, X, exec, if [[ -z $(hyprpanel --list) ]]; then hyprpanel; else hyprpanel --quit; fi
 bind = $mainMod, Y, exec, if pgrep -x hyprpaper > /dev/null; then killall hyprpaper; else hyprpaper; fi
 # bind = $mainMod, P, pseudo, # dwindle
