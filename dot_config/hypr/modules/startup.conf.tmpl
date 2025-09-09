@@ -14,3 +14,10 @@ exec-once = spotify
 # Fixes
 exec-once = brightnessctl set --device=platform::micmute 0
 {{- end }}
+exec-once = \
+  sleep 4 && \
+  killall -e xdg-desktop-portal-hyprland || true && \
+  killall xdg-desktop-portal || true && \
+  /usr/lib/xdg-desktop-portal-hyprland & \
+  && sleep 4 && \
+  /usr/lib/xdg-desktop-portal &
