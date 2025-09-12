@@ -23,16 +23,14 @@ input {
     repeat_delay = 195
 }
 
-{{- if eq .chezmoi.hostname "nona" }}
 gestures {
-    workspace_swipe = true
-    workspace_swipe_fingers = 3
     workspace_swipe_create_new = true
     workspace_swipe_forever = true
-    workspace_swipe_min_speed_to_force = 0
-    # workspace_swipe_touch = true
+    workspace_swipe_touch = true
+    # workspace_swipe_min_speed_to_force = 0
+
+    gesture = 3, horizontal, workspace
 }
-{{- end }}
 
 # https://wiki.hypr.land/Configuring/Variables/#cursor
 cursor {
