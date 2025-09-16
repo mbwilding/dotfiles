@@ -4,7 +4,11 @@ ecosystem {
 }
 
 general {
-    layout = dwindle
+{{- if eq .chezmoi.hostname "nona" }}
+    layout = scrolling
+{{ else }}
+    layout = master
+{{- end }}
 
     gaps_in = 4.0
     gaps_out = 8.0
