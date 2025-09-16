@@ -105,9 +105,6 @@ keybind = super+shift+ctrl+alt+i=inspector:toggle
 # ADDITIONAL
 {{- if eq .chezmoi.os "darwin" }}
 font-size = 23
-# font-size = 18
-# window-width = 120
-# window-height = 30
 auto-update = download
 macos-non-native-fullscreen = false
 macos-titlebar-proxy-icon = visible
@@ -117,12 +114,13 @@ window-decoration = client
 macos-option-as-alt = left
 # command = /opt/homebrew/bin/fish
 {{ else if eq .chezmoi.os "linux" }}
-font-size = 26
-# font-size = 17
-# window-width = 120
-# window-height = 36
 gtk-titlebar = false
 gtk-tabs-location = top
 window-decoration = server
 # command = /usr/bin/zsh
+{{- end }}
+{{- if eq .chezmoi.hostname "nona" }}
+font-size = 21
+{{ else }}
+font-size = 26
 {{- end }}
