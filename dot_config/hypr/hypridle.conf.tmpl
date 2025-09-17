@@ -5,12 +5,23 @@ general {
 }
 
 listener {
+    timeout = 300 # 5min
+    on-timeout = loginctl lock-session
+}
+
+listener {
+    timeout = 330 # 5.5min
+    on-timeout = hyprctl dispatch dpms off
+    on-resume = hyprctl dispatch dpms on && brightnessctl -r
+}
+
+{{- if eq .chezmoi.hostname "nona" }}
+listener {
     timeout = 150                                # 2.5min.
     on-timeout = brightnessctl -s set 10         # set monitor backlight to minimum, avoid 0 on OLED monitor.
     on-resume = brightnessctl -r                 # monitor backlight restore.
 }
 
-{{- if eq .chezmoi.hostname "nona" }}
 listener {
     timeout = 150 # 2.5 min
     on-timeout = brightnessctl -sd platform::kbd_backlight set 0
@@ -22,14 +33,3 @@ listener {
     on-timeout = systemctl suspend # suspend pc
 }
 {{- end }}
-
-listener {
-    timeout = 300 # 5min
-    on-timeout = loginctl lock-session
-}
-
-listener {
-    timeout = 330 # 5.5min
-    on-timeout = hyprctl dispatch dpms off
-    on-resume = hyprctl dispatch dpms on && brightnessctl -r
-}
