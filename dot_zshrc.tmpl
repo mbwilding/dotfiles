@@ -70,6 +70,9 @@ alias wgu='sudo systemctl start wg-quick@Home'
 alias wgd='sudo systemctl stop wg-quick@Home'
 alias rwwa='proxychains -f ~/.config/proxychains/proxychains.conf'
 {{- end }}
+{{- if eq .chezmoi.hostname "nona" }}
+alias nmr='nmcli radio wifi off && nmcli radio wifi on'
+{{- end }}
 
 # Functions
 {{- if eq .chezmoi.os "linux" }}
