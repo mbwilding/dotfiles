@@ -14,7 +14,7 @@ exec-once = spotify
 {{- end }}
 {{- if eq .chezmoi.hostname "nona" }}
 # exec-once = oxidekeys
-exec-once = cargo run --release --manifest-path "/home/anon/dev/github/oxidekeys/Cargo.toml"
+# exec-once = cargo run --release --manifest-path "/home/anon/dev/github/oxidekeys/Cargo.toml"
 # Fixes
 exec-once = brightnessctl set --device=platform::micmute 0
 {{- end }}
