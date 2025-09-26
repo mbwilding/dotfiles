@@ -3,11 +3,12 @@ input {
     kb_layout = us
 {{- if eq .chezmoi.hostname "nona" }}
     kb_variant = dvorak
+    kb_options = fkeys:basic_13-24
 {{- else }}
     kb_variant =
+    kb_options =
 {{- end }}
     kb_model =
-    kb_options =
     kb_rules =
 
     sensitivity = 0
@@ -28,6 +29,7 @@ device {
     name = at-translated-set-2-keyboard
     kb_layout = us
     kb_variant = dvorak
+    kb_options = fkeys:basic_13-24
 }
 {{- end }}
 
