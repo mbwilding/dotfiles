@@ -1,0 +1,9 @@
+(
+    output: "all",
+    source: Path("/home/anon/Pictures/Wallpapers/space-shuttle-retrowave-digital-art-4k-wallpaper-uhdpaper.com-100@5@h.jpg"),
+    filter_by_theme: true,
+    rotation_frequency: 300,
+    filter_method: Lanczos,
+    scaling_mode: Zoom,
+    sampling_method: Alphanumeric,
+)

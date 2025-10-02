@@ -1,0 +1,9 @@
+(
+    rules: "",
+    model: "pc105",
+    layout: "us,us",
+    variant: "dvorak,",
+    options: Some("terminate:ctrl_alt_bksp"),
+    repeat_delay: 200,
+    repeat_rate: 45,
+)

@@ -1,0 +1,15 @@
+{
+    (
+        modifiers: [
+            Super,
+        ],
+        key: "grave",
+    ): System(LogOut),
+    (
+        modifiers: [
+            Super,
+            Shift,
+        ],
+        key: "Escape",
+    ): Disable,
+}

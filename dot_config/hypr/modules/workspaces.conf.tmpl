@@ -1,0 +1,36 @@
+# See https://wiki.hyprland.org/Configuring/Workspace-Rules/
+{{- if eq .chezmoi.hostname "anon" }}
+workspace = name:main,   monitor:DP-3, default:true, layoutopt:orientation:left
+workspace = name:social, monitor:DP-2, default:true, layoutopt:orientation:top
+workspace = name:spare,  monitor:DP-1, default:true, layoutopt:orientation:top
+
+windowrule = workspace social, class:teams-for-linux
+windowrule = workspace social, class:Spotify
+windowrule = workspace social, class:discord
+windowrule = workspace main,   class:com.mitchellh.ghostty
+
+# Set mouse to center monitor
+exec-once = hyprctl dispatch workspace main
+{{- end }}
+{{- if eq .chezmoi.hostname "nona" }}
+workspace = 1, monitor:eDP-1, default:true, layoutopt:orientation:left
+workspace = 2, monitor:eDP-1, layoutopt:orientation:left
+workspace = 3, monitor:eDP-1, layoutopt:orientation:left
+workspace = 4, monitor:eDP-1, layoutopt:orientation:left
+workspace = 5, monitor:eDP-1, layoutopt:orientation:left
+workspace = 6, monitor:eDP-1, layoutopt:orientation:left
+workspace = 7, monitor:eDP-1, layoutopt:orientation:left
+workspace = 8, monitor:eDP-1, layoutopt:orientation:left
+workspace = 9, monitor:eDP-1, layoutopt:orientation:left
+{{- end }}
+
+# Suppress fullscreen on open
+windowrulev2 = suppressevent maximize, class:.*
+
+# Suppress idle on fullscreen
+windowrulev2 = idleinhibit fullscreen, class:.*
+
+# Unreal Engine
+windowrulev2 = unset,class:^(UnrealEditor)$,title:^\w*$
+windowrulev2 = noinitialfocus,class:^(UnrealEditor)$,title:^\w*$
+windowrulev2 = noanim,class:^(UnrealEditor)$,title:^\w*$

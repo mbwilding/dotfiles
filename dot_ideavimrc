@@ -1,0 +1,78 @@
+"" Install plug-ins: IdeaVim, AceJump, IdeaVim-EasyMotion, IdeaVim-Sneak
+
+let mapleader=" "
+noremap ; :
+set scrolloff=3
+set incsearch
+set hlsearch
+set number
+" set relativenumber
+" set visualbell
+set idearefactormode=keep
+set nocursorline
+
+" Plug "machakann/vim-highlightedyank"
+ Plug "tpope/vim-commentary"
+" Plug "easymotion/vim-easymotion"
+Plug "preservim/nerdtree"
+
+" set sneak
+" set easymotion
+set commentary
+set NERDTree
+
+" g:EasyMotion_startofline 0
+
+Plug "machakann/vim-highlightedyank"
+let g:highlightedyank_highlight_duration = "100"
+let g:highlightedyank_highlight_color = "rgba(160, 160, 160, 155)"
+set highlightedyank
+
+" Windows
+map     -                   :NERDTreeToggle<CR>
+map     <leader>th          <Action>(ActivateTerminalToolWindow)
+map     q                   <Action>(HideActiveWindow)
+map     <leader>wd          <action>(ActivateDebugToolWindow)
+map     Q                   <action>(CloseEditor)
+" map     <S-s>               <Action>(ShowSettings)
+
+" Actions
+" map     <leader>da          <Action>(VimFindActionIdAction)
+map     <leader>z           <Action>(ToggleZenMode)
+" map     <leader>vd          <Action>(ToggleDistractionFreeMode)
+" map     <leader>vp          <Action>(TogglePresentationMode)
+map     <leader>d           <Action>(Debug)
+map     <leader>r           <Action>(Run)
+map     <leader>s           <Action>(Stop)
+map     <leader><enter>     <Action>(ShowIntentionActions)
+map     <leader>f           <Action>(ReformatCode)
+map     <leader>fn          <Action>(NewFile)
+map     <leader>rn          <Action>(RenameElement)
+map     <leader>/           <Action>(SearchEverywhere)
+map     <leader><leader>    <Action>(GotoFile)
+map     <leader>ss          <Action>(GotoSymbol)
+map     <leader>sc          <Action>(GotoClass)
+map     <leader>sa          <Action>(GotoAction)
+map     <leader>sh          <Action>(GotoSuperMethod)
+map     <leader>sg          <Action>(TextSearchAction)
+map     <leader>sn          <Action>(ShowNavBar)
+map     <leader>sm          <Action>(FileStructurePopup)
+map     <leader>db          <Action>(ToggleLineBreakpoint)
+map     <leader>dt          <Action>(ToggleBreakpointEnabled)
+map     <leader>gp          <Action>(QuickImplementations)
+map     <leader>gd          <Action>(GotoDefinition)
+map     <leader>gD          <Action>(GotoDeclaration)
+map     <leader>gr          <Action>(FindUsages)
+map     <leader>ci          <Action>(ReSharperGotoImplementation)
+map     <leader>em          <Action>(ExtractMethod)
+
+" Redo
+map     U                   <C-r>
+
+"map     g                   <Action>(AceAction)
+"map     F                   <Action>(AceTargetAction)
+"map     g                   <Action>(AceLineAction)
+
+"" Graveyard
+" map     <leader>wa          <Action>(SaveAll)
+" map     <leader>w           <Action>(SaveDocument)

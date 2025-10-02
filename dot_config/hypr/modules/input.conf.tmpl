@@ -1,0 +1,59 @@
+# https://wiki.hyprland.org/Configuring/Variables/#input
+input {
+    kb_layout = us
+{{- if eq .chezmoi.hostname "nona" }}
+    kb_variant = dvorak
+    kb_options = fkeys:basic_13-24
+{{- else }}
+    kb_variant =
+    kb_options =
+{{- end }}
+    kb_model =
+    kb_rules =
+
+    sensitivity = 0
+    follow_mouse = 0
+    mouse_refocus = false
+
+    touchpad {
+        natural_scroll = true
+        scroll_factor = 0.2
+    }
+
+    repeat_rate = 63
+    repeat_delay = 195
+}
+
+{{- if eq .chezmoi.hostname "nona" }}
+device {
+    name = at-translated-set-2-keyboard
+    kb_layout = us
+    kb_variant = dvorak
+    kb_options = fkeys:basic_13-24
+}
+{{- end }}
+
+device {
+    name = cornemini-keyboard
+    kb_layout = us
+    kb_variant = us
+}
+
+gestures {
+    workspace_swipe_create_new = true
+    workspace_swipe_forever = true
+    workspace_swipe_touch = true
+    # workspace_swipe_min_speed_to_force = 0
+
+    gesture = 3, horizontal, workspace
+    gesture = 3, up, fullscreen
+}
+
+# https://wiki.hypr.land/Configuring/Variables/#cursor
+cursor {
+    no_hardware_cursors = 2
+    no_break_fs_vrr = 2
+    hide_on_key_press = true
+    hide_on_touch = true
+    no_warps = false
+}

@@ -1,0 +1,21 @@
+{{- if ne .chezmoi.os "linux" }}
+chrome-flags.conf
+discord
+hypr
+hyprpanel
+klassy
+kwinrc
+kwinrulesrc
+mpv
+pipewire
+spotify-launcher.conf
+sunshine
+waybar
+yabridgectl
+{{- end }}
+
+{{- if ne .chezmoi.os "darwin" }}
+aerospace
+karabiner
+yabai
+{{- end }}
