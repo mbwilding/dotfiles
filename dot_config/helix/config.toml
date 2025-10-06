@@ -1,3 +1,5 @@
+theme = "wilding"
+
 [keys.normal]
 # Quick iteration on config changes
 C-o = ":config-open"
