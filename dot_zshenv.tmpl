@@ -34,7 +34,7 @@ export DYNAMICS_DEV_CLIENT_SECRET="{{ onepasswordRead "op://Work/Dynamics/dev_cl
 {{- if eq .chezmoi.os "linux" }}
 export ELECTRON_OZONE_PLATFORM_HINT="wayland"
 export SDL_VIDEODRIVER=wayland
-export QT_QPA_PLATFORM="wayland"
+# export QT_QPA_PLATFORM="wayland"
 export DXVK_HDR=1
 export PROTON_ENABLE_HDR=1
 export PROTON_ENABLE_WAYLAND=1
