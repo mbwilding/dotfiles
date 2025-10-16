@@ -209,26 +209,6 @@ nvmon() {
     load-nvmrc
 }
 
-opl() {
-    OP_SESSION_FILE="$HOME/.config/op/session"
-
-    if [[ -f "$OP_SESSION_FILE" ]]; then
-        export OP_SESSION_my="$(<"$OP_SESSION_FILE")"
-    fi
-
-    if ! op whoami >/dev/null 2>&1; then
-        eval "$(op signin)"
-
-        session_var="$(printenv | grep '^OP_SESSION_' | cut -d= -f1)"
-
-        if [[ -n "$session_var" ]]; then
-            session_value="${(P)session_var}"
-            mkdir -p "$(dirname "$OP_SESSION_FILE")"
-            echo "$session_value" > "$OP_SESSION_FILE"
-        fi
-    fi
-}
-
 # Integrations
 {{- if eq .chezmoi.os "darwin" }}
 eval "$(/opt/homebrew/bin/brew shellenv)"
