@@ -11,7 +11,11 @@ allowedSignersFile = /home/anon/.config/git/allowed_signers
 {{ if eq .chezmoi.os "darwin" -}}
 program = "/applications/1password.app/contents/macos/op-ssh-sign"
 {{ else if eq .chezmoi.os "linux" -}}
+  {{ if (.chezmoi.kernel.osrelease | lower | contains "microsoft") -}}
+program = "/mnt/c/Users/Matt/AppData/Local/1Password/app/8/op-ssh-sign-wsl"
+  {{ else -}}
 program = "/opt/1Password/op-ssh-sign"
+  {{ end }}
 {{- end }}
 
 [commit]
