@@ -77,6 +77,7 @@ alias kctlnvim='pushd $HOME/.local/share/nvim/lazy/kubectl.nvim; make build_go &
 {{- end }}
 {{- if eq .chezmoi.hostname "nona" }}
 alias nmr='nmcli radio wifi off && nmcli radio wifi on'
+alias keys='sudo -e /etc/keyd/default.conf && sudo systemctl restart keyd'
 {{- end }}
 
 # Functions
