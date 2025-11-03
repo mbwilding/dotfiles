@@ -19,13 +19,13 @@ input {
 {{- if eq .chezmoi.hostname "nona" }}
 device {
     name = keyd-virtual-keyboard
-    kb_variant = us
-}
-
-device {
-    name = at-translated-set-2-keyboard
     kb_variant = dvorak
 }
+
+# device {
+#     name = at-translated-set-2-keyboard
+#     kb_variant = dvorak
+# }
 {{- end }}
 
 device {
