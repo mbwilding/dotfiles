@@ -1,15 +1,7 @@
 # https://wiki.hyprland.org/Configuring/Variables/#input
 input {
     kb_layout = us
-{{- if eq .chezmoi.hostname "nona" }}
-    kb_variant = dvorak
     kb_options = fkeys:basic_13-24
-{{- else }}
-    kb_variant =
-    kb_options =
-{{- end }}
-    kb_model =
-    kb_rules =
 
     sensitivity = 0
     follow_mouse = 0
@@ -20,22 +12,24 @@ input {
         scroll_factor = 0.2
     }
 
-    repeat_rate = 63
-    repeat_delay = 195
+    # repeat_rate = 63
+    # repeat_delay = 195
 }
 
 {{- if eq .chezmoi.hostname "nona" }}
 device {
+    name = keyd-virtual-keyboard
+    kb_variant = us
+}
+
+device {
     name = at-translated-set-2-keyboard
-    kb_layout = us
     kb_variant = dvorak
-    kb_options = fkeys:basic_13-24
 }
 {{- end }}
 
 device {
     name = cornemini-keyboard
-    kb_layout = us
     kb_variant = us
 }
 
