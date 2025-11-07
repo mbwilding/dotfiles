@@ -12,8 +12,8 @@ input {
         scroll_factor = 0.2
     }
 
-    # repeat_rate = 63
-    # repeat_delay = 195
+    ## # repeat_rate = 63
+    ## # repeat_delay = 195
 }
 
 {{- if eq .chezmoi.hostname "nona" }}
@@ -22,10 +22,10 @@ device {
     kb_variant = dvorak
 }
 
-# device {
-#     name = at-translated-set-2-keyboard
-#     kb_variant = dvorak
-# }
+device {
+   name = at-translated-set-2-keyboard
+   kb_variant = dvorak
+}
 {{- end }}
 
 device {
