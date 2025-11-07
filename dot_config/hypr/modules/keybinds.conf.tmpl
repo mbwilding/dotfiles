@@ -60,6 +60,12 @@ bind = $mainMod SHIFT, 8, movetoworkspace, 8
 bind = $mainMod SHIFT, 9, movetoworkspace, 9
 bind = $mainMod SHIFT, 0, movetoworkspace, 10
 
+# Set repeatable binds for resizing the active window.
+binde = $mainMod, right, resizeactive, 20 0
+binde = $mainMod, left, resizeactive, -20 0
+binde = $mainMod, up, resizeactive, 0 -20
+binde = $mainMod, down, resizeactive, 0 20
+
 # Example special workspace (scratchpad)
 # bind = $mainMod, S, togglespecialworkspace, magic
 # bind = $mainMod SHIFT, S, movetoworkspace, special:magic
