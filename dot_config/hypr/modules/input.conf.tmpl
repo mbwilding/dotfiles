@@ -1,6 +1,12 @@
 # https://wiki.hyprland.org/Configuring/Variables/#input
 input {
     kb_layout = us
+{{- if eq .chezmoi.hostname "anon" }}
+    kb_variant = us
+{{- end }}
+{{- if eq .chezmoi.hostname "nona" }}
+    kb_variant = dvorak
+{{- end }}
     kb_options = fkeys:basic_13-24
 
     sensitivity = 0
