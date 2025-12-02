@@ -4,29 +4,10 @@ workspace = name:main,   monitor:DP-3, default:true, layoutopt:orientation:left
 workspace = name:social, monitor:DP-2, default:true, layoutopt:orientation:top
 workspace = name:spare,  monitor:DP-1, default:true, layoutopt:orientation:top
 
-windowrule {
-  name = teams
-  match:workspace = social
-  match:class = teams-for-linux
-}
-
-windowrule {
-  name = spotify
-  match:workspace = social
-  match:class = Spotify
-}
-
-windowrule {
-  name = discord
-  match:workspace = social
-  match:class = discord
-}
-
-windowrule {
-  name = ghostty
-  match:workspace = main
-  match:class = com.mitchellh.ghostty
-}
+windowrule = workspace social, class:teams-for-linux
+windowrule = workspace social, class:Spotify
+windowrule = workspace social, class:discord
+windowrule = workspace main,   class:com.mitchellh.ghostty
 
 # Set mouse to center monitor
 exec-once = hyprctl dispatch workspace main
@@ -43,37 +24,13 @@ workspace = 8, monitor:eDP-1, layoutopt:orientation:left
 workspace = 9, monitor:eDP-1, layoutopt:orientation:left
 {{- end }}
 
-# Suppress
-windowrule {
-  name = suppress-event-maximize
-  match:class = .*
-  suppress_event = maximize
-}
+# Suppress fullscreen on open
+windowrulev2 = suppressevent maximize, class:.*
 
-windowrule {
-  name = idle-inhibit-fullscreen
-  match:class = .*
-  idle_inhibit = fullscreen
-}
+# Suppress idle on fullscreen
+windowrulev2 = idleinhibit fullscreen, class:.*
 
 # Unreal Engine
-windowrule {
-  name = unreal-unset
-  match:class = ^(UnrealEditor)$
-  match:title = ^\w*$
-  workspace = unset
-}
-
-windowrule {
-  name = unreal-no-initial-focus
-  match:class = ^(UnrealEditor)$
-  match:title = ^\w*$
-  no_initial_focus = true
-}
-
-windowrule {
-  name = unreal-no-anim
-  match:class = ^(UnrealEditor)$
-  match:title = ^\w*$
-  no_anim = true
-}
+windowrulev2 = unset,class:^(UnrealEditor)$,title:^\w*$
+windowrulev2 = noinitialfocus,class:^(UnrealEditor)$,title:^\w*$
+windowrulev2 = noanim,class:^(UnrealEditor)$,title:^\w*$
