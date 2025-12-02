@@ -9,6 +9,10 @@ input {
 {{- end }}
     kb_options = fkeys:basic_13-24
 
+    resolve_binds_by_sym = true
+    repeat_rate = 63
+    repeat_delay = 195
+
     sensitivity = 0
     follow_mouse = 0
     mouse_refocus = false
@@ -17,9 +21,6 @@ input {
         natural_scroll = true
         scroll_factor = 0.2
     }
-
-    repeat_rate = 63
-    repeat_delay = 195
 }
 
 {{- if eq .chezmoi.hostname "nona" }}
@@ -29,13 +30,18 @@ device {
 }
 
 device {
-   name = at-translated-set-2-keyboard
-   kb_variant = dvorak
+    name = at-translated-set-2-keyboard
+    kb_variant = dvorak
 }
 {{- end }}
 
 device {
     name = cornemini-keyboard
+    kb_variant = us
+}
+
+device {
+    name = zsa-technology-labs-voyager
     kb_variant = us
 }
 
