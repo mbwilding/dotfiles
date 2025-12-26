@@ -73,11 +73,10 @@ cmd = nvim -d "$LOCAL" "$REMOTE" -c "CodeDiff"
 prompt = false
 
 [merge]
-conflictStyle = zdiff3
+tool = vscode-diff
 
-[mergetool]
-prompt = false
-keepBackup = false
+[mergetool "vscode-diff"]
+cmd = nvim \"$MERGED\" -c \"CodeDiff merge \\\"$MERGED\\\"\"
 
 [filter "lfs"]
 process = git-lfs filter-process
