@@ -5,7 +5,6 @@ Number=1
 Rows=1
 
 [NightColor]
-Active=true
 Mode=Constant
 NightTemperature=4800
 
@@ -51,6 +50,15 @@ tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"wi
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
 
 [Tiling][1a238a09-340c-5d56-9813-86a5c27fc165]
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
+[Tiling][3b5603af-e249-46ba-b545-039edc54d2a8][1132dfdd-8b36-4404-9b0f-6ec999da42de]
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
+[Tiling][3b5603af-e249-46ba-b545-039edc54d2a8][5b202a74-462a-404a-bf4f-fed07ad79470]
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
+[Tiling][3b5603af-e249-46ba-b545-039edc54d2a8][b0458b3d-0c61-4bf2-a10f-d1dbdaca01d6]
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
 
 [Tiling][3f409b5c-549b-5bd4-8daf-e63fb71bb6c5]
