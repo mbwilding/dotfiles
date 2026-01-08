@@ -1,0 +1,130 @@
+# THEME
+background = #000000
+foreground = #bdbdbd
+cursor-color = #bdbdbd
+selection-background = #6fa4c4
+selection-foreground = #000000
+# palette = 0=#787878
+palette = 0=#181818
+palette = 1=#e78284
+palette = 2=#39cc8f
+palette = 3=#c9a26d
+palette = 4=#8caaee
+palette = 5=#f4b8e4
+palette = 6=#81c8be
+palette = 7=#a5adce
+palette = 8=#4f5258
+palette = 9=#ff4747
+palette = 10=#39cc8f
+palette = 11=#ffffff
+palette = 12=#9591ff
+palette = 13=#ed94c0
+palette = 14=#5abfb5
+palette = 15=#b5bfe2
+
+# FONT
+font-family = "NeoSpleen Nerd Font"
+# font-family = "NeoSpleen Nerd Font Medium"
+# font-family-bold = "NeoSpleen Nerd Font"
+# font-family = "JetBrains Mono Nerd Font"
+# font-family = "Iosevka Nerd Font"
+# font-family = "Agave Nerd Font"
+# font-family = "FiraCode Nerd Font"
+# font-synthetic-style = true
+adjust-cell-height = 12%
+adjust-cursor-height = 12%
+adjust-cell-width = -8%
+adjust-underline-position = 4
+
+# SETTINGS
+background-opacity = 0.85
+clipboard-paste-protection = false
+clipboard-read = allow
+clipboard-trim-trailing-spaces = true
+clipboard-write = allow
+confirm-close-surface = false
+copy-on-select = true
+cursor-click-to-move = true
+cursor-invert-fg-bg = true
+cursor-opacity = 1.0
+cursor-style = block
+cursor-style-blink = true
+focus-follows-mouse = true
+mouse-hide-while-typing = true
+mouse-shift-capture = false
+quit-after-last-window-closed = true
+resize-overlay = never
+shell-integration = zsh
+shell-integration-features = cursor,sudo,title,ssh-terminfo,ssh-env
+window-padding-balance = false
+window-padding-x = 0
+window-padding-y = 0
+window-theme = ghostty
+# title = " "
+
+# KEYMAP
+keybind = clear
+keybind = ctrl+0=reset_font_size
+keybind = ctrl+equal=increase_font_size:1
+keybind = ctrl+minus=decrease_font_size:1
+keybind = f11=toggle_fullscreen
+keybind = super+shift+ctrl+alt+a=goto_tab:1
+keybind = super+shift+ctrl+alt+o=goto_tab:2
+keybind = super+shift+ctrl+alt+e=goto_tab:3
+keybind = super+shift+ctrl+alt+u=goto_tab:4
+keybind = super+shift+ctrl+alt+i=goto_tab:5
+keybind = super+shift+ctrl+alt+1=goto_tab:1
+keybind = super+shift+ctrl+alt+2=goto_tab:2
+keybind = super+shift+ctrl+alt+3=goto_tab:3
+keybind = super+shift+ctrl+alt+4=goto_tab:4
+keybind = super+shift+ctrl+alt+5=goto_tab:5
+keybind = super+shift+ctrl+alt+6=goto_tab:6
+keybind = super+shift+ctrl+alt+7=goto_tab:7
+keybind = super+shift+ctrl+alt+8=goto_tab:8
+keybind = super+shift+ctrl+alt+9=goto_tab:9
+keybind = super+shift+ctrl+alt+c=copy_to_clipboard
+keybind = super+shift+ctrl+alt+comma=move_tab:-1
+# keybind = super+shift+ctrl+alt+enter=new_split:auto
+# keybind = super+shift+ctrl+alt+h=goto_split:left
+# keybind = super+shift+ctrl+alt+j=goto_split:bottom
+# keybind = super+shift+ctrl+alt+k=goto_split:top
+# keybind = super+shift+ctrl+alt+l=goto_split:right
+keybind = super+shift+ctrl+alt+m=toggle_split_zoom
+keybind = super+shift+ctrl+alt+n=next_tab
+keybind = super+shift+ctrl+alt+l=next_tab
+keybind = super+shift+ctrl+alt+p=previous_tab
+keybind = super+shift+ctrl+alt+h=previous_tab
+keybind = super+shift+ctrl+alt+period=move_tab:1
+keybind = super+shift+ctrl+alt+t=new_tab
+keybind = super+shift+ctrl+alt+v=paste_from_clipboard
+keybind = super+shift+ctrl+alt+q=close_surface
+keybind = super+shift+ctrl+alt+w=close_tab
+keybind = super+shift+ctrl+alt+z=write_screen_file:open
+keybind = super+shift+ctrl+alt+i=inspector:toggle
+
+# ADDITIONAL
+{{- if eq .chezmoi.os "darwin" }}
+font-size = 23
+auto-update = download
+macos-non-native-fullscreen = false
+macos-titlebar-proxy-icon = visible
+macos-titlebar-style = tabs
+macos-window-shadow = true
+window-decoration = client
+macos-option-as-alt = left
+# command = /opt/homebrew/bin/fish
+{{ else if eq .chezmoi.os "linux" }}
+gtk-titlebar = false
+gtk-tabs-location = top
+window-decoration = server
+# command = /usr/bin/zsh
+{{- end }}
+{{- if eq .chezmoi.hostname "nona" }}
+font-size = 21
+{{ else }}
+font-size = 26
+{{- end }}
+
+# Shaders
+# custom-shader = shaders/cursor_smear.glsl
+# custom-shader = shaders/cursor_blaze.glsl

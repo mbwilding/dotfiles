@@ -1,0 +1,72 @@
+"ui.background" = "background"
+"ui.comment" = "comment"
+"ui.cursor" = { fg = "background", bg = "#4eade5" }
+"ui.gutter" = { fg = "redundant", bg = "background" }
+"ui.help" = { bg = "window_bg" }
+"ui.menu" = { fg = "foreground", bg = "window_bg" }
+"ui.menu.selected" = { fg = "window_bg", bg = "keyword" }
+"ui.popup" = { bg = "window_bg" }
+"ui.selection" = { bg = "window_accent", fg = "variable" }
+"ui.statusline" = { fg = "foreground", bg = "window_accent" }
+"ui.statusline.inactive" = { fg = "comment", bg = "window_accent" }
+"ui.statusline.normal" = { fg = "variable", bg = "window_split" }
+"ui.text" = "foreground"
+"ui.virtual.inlay-hint" = { fg = "inlay" }
+
+"attribute" = "attribute"
+"comment" = "comment"
+"constant" = "constant"
+"enum" = "enum"
+"error" = "error"
+"escape" = "escape"
+"function" = "method"
+"hint" = "hint"
+"info" = "info"
+"interface" = "interface"
+"keyword" = "keyword"
+"label" = "enum"
+"macro" = "macro"
+"module" = "module"
+"namespace" = "namespace"
+"number" = "number"
+"operator" = "operator"
+"parameter" = "variable"
+"property" = "member"
+"punctuation" = "punctuation"
+"string" = "string"
+"success" = "ok"
+"type" = "struct"
+"variable" = "variable"
+"warning" = "warning"
+
+[palette]
+attribute = "#ed94c0"
+background = "#000000"
+comment = "#85c46c"
+constant = "#83f1ff"
+enum = "#e2bfff"
+error = "#ff4747"
+escape = "#ed94c0"
+foreground = "#bdbdbd"
+hint = "#66c3cc"
+info = "#4eade5"
+inlay = "#4f5258"
+interface = "#9591ff"
+keyword = "#6c95eb"
+macro = "#4eade5"
+member = "#91c2ff"
+method = "#39cc8f"
+module = "#ffc794"
+namespace = "#ffb083"
+number = "#ed94c0"
+ok = "#39cc8f"
+operator = "#eeeeee"
+punctuation = "#a4a4a4"
+redundant = "#787878"
+string = "#c9a26d"
+struct = "#c191ff"
+variable = "#edeecf"
+warning = "#ffb083"
+window_accent = "#202020"
+window_bg = "#101010"
+window_split = "#404040"

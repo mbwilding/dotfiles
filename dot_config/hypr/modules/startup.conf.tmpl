@@ -1,0 +1,18 @@
+# System
+exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+exec-once = nm-applet
+exec-once = hyprpaper
+exec-once = hyprpanel
+exec-once = hypridle
+# exec-once = hyprsunset
+{{- if eq .chezmoi.hostname "anon" }}
+# Applications
+exec-once = teams-for-linux &
+exec-once = discord &
+exec-once = spotify &
+{{- end }}
+{{- if eq .chezmoi.hostname "nona" }}
+# Fixes
+exec-once = brightnessctl set --device=platform::micmute 0 &
+{{- end }}
+## exec-once = /usr/lib/xdg-desktop-portal-hyprland &; sleep 4; /usr/lib/xdg-desktop-portal &;

@@ -1,0 +1,63 @@
+export LANG=en_AU.UTF-8
+export LC_ALL=en_AU.UTF-8
+export EDITOR="nvim"
+export XDG_CONFIG_HOME="$HOME/.config"
+export MANPAGER="nvim +Man!"
+export MANWIDTH="999"
+export ADO_PAT="{{ onepasswordRead "op://Work/azure-devops/credential" }}"
+export AWS_PROFILE="md"
+export AWS_REGION="ap-southeast-2"
+export RUST_LOG="info"
+export AZP_TOKEN="{{ onepasswordRead "op://Work/azure-devops/credential" }}"
+export CARGO_REGISTRY_TOKEN="{{ onepasswordRead "op://Personal/cargo/token" }}"
+export DEEPSEEK_API_KEY="{{ onepasswordRead "op://Personal/deepseek/credential" }}"
+export OPENAI_API_KEY="{{ onepasswordRead "op://Personal/openai/api key" }}"
+export DOTNET_ASPIRE_CONTAINER_RUNTIME="podman"
+export DOTNET_CLI_TELEMETRY_OPTOUT="1"
+export GH_PAT="{{ onepasswordRead "op://Work/GitHub/token" }}"
+export GITHUB_TOKEN="{{ onepasswordRead "op://Work/GitHub/token" }}"
+export GITLAB_TOKEN="{{ onepasswordRead "op://Work/GitLab/token" }}"
+export JIRA_API_TOKEN="{{ onepasswordRead "op://Work/jira/credential" }}"
+export JIRA_DOMAIN="{{ onepasswordRead "op://Work/Work/org lower" }}.atlassian.net"
+export JIRA_HOST="https://{{ onepasswordRead "op://Work/Work/org lower" }}.atlassian.net"
+export JIRA_USER="{{ onepasswordRead "op://Work/Work/id email" }}"
+export OPENAI_API_KEY="{{ onepasswordRead "op://Personal/openai/api key" }}"
+export PULUMI_ACCESS_TOKEN="{{ onepasswordRead "op://Personal/pulumi/token" }}"
+export WEATHER_API_TOKEN="{{ onepasswordRead "op://Personal/www.weatherapi.com/token" }}"
+export ELEVENLABS_API_KEY="{{ onepasswordRead "op://Personal/ElevenLabs/token" }}"
+export STEAM_API_KEY="{{ onepasswordRead "op://Personal/Steam/credential" }}"
+export DYNAMICS_URL="{{ onepasswordRead "op://Work/Dynamics/dev_url" }}"
+export DYNAMICS_CLIENT_ID="{{ onepasswordRead "op://Work/Dynamics/dev_client_id" }}"
+export DYNAMICS_CLIENT_SECRET="{{ onepasswordRead "op://Work/Dynamics/dev_client_secret" }}"
+export DYNAMICS_DEV_URL="{{ onepasswordRead "op://Work/Dynamics/dev_url" }}"
+export DYNAMICS_DEV_CLIENT_ID="{{ onepasswordRead "op://Work/Dynamics/dev_client_id" }}"
+export DYNAMICS_DEV_CLIENT_SECRET="{{ onepasswordRead "op://Work/Dynamics/dev_client_secret" }}"
+{{- if eq .chezmoi.os "linux" }}
+export ELECTRON_OZONE_PLATFORM_HINT="wayland"
+# export SDL_VIDEODRIVER=wayland
+# export QT_QPA_PLATFORM="wayland"
+export DXVK_HDR=1
+export PROTON_ENABLE_HDR=1
+export PROTON_ENABLE_WAYLAND=1
+export PROTON_USE_NTSYNC=1
+export GODOT4_BIN="/usr/bin/godot"
+{{- if eq .chezmoi.hostname "nona" }}
+export WAYLANDDRV_PRIMARY_MONITOR=eDP-1
+export VDPAU_DRIVER="radeonsi"
+export LIBVA_DRIVER_NAME="radeonsi"
+{{- end }}
+{{- if eq .chezmoi.hostname "anon" }}
+export WAYLANDDRV_PRIMARY_MONITOR=HDMI-A-1
+export ENABLE_HDR_WSI=1
+export VDPAU_DRIVER="nvidia"
+export LIBVA_DRIVER_NAME="nvidia"
+export PIPEWIRE_LATENCY="64/44100"
+{{- end }}
+if [ -z "$SSH_AUTH_SOCK" ]; then
+  export SSH_AUTH_SOCK="$HOME/.1password/agent.sock"
+fi
+{{ else if eq .chezmoi.os "darwin" }}
+if [ -z "$SSH_AUTH_SOCK" ]; then
+  export SSH_AUTH_SOCK="$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+fi
+{{- end -}}

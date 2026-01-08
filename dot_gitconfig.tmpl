@@ -1,0 +1,97 @@
+[user]
+name = Matthew Wilding
+email = {{ onepasswordRead "op://Personal/Email/username" }}
+signingkey = ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC2jIMaG8x0TS0fFLRkDNhju0DUJ2YVpzuw7N3d/CV94iQBsiUoEQCSS6LbiurLLOq8HfKXWea2IuYdagAv/w+jAcF2qlXpQUt2wbvNmlvK4rwCZpnze8N6rlcuFaEsHc72rIsN9M72jHVq1UATxvOFe+CC7d+XcI3NH272idXFmrl9pj5sIeiN7dsg9RMuZqssnshWxVu9Pn5U3/y/QSSSFl84tQvHqLDH7K7F9zae91yrYELlG397lDyirVJa+jxz78PqAO/Zd/R4faciU9rxK8t2t3/V3zBJxi/f4hmDBu676OAFiYfaOcBSsGYcWUnxRJEOpjfBYAEa6GanodwQ0ovw+ofc/6oGHf1fFlHfymNw+QwLa9+Y9o8IohaUikrkD9DwMA9hLnVBgqgfelV+3E3Tkuyw43SmwpJvOU/zwCF99RcxkFtAokAKD526Jcuz/dOjUwOpkPZ5KxjvK2Pw+g8QKr4ONJZJfUrU6JT5zyEhkRDFZUFnWIOWILetNhGFBtW8V0lFl0TVtFuUTYDFhixu2onD+5vaQM3dQS/HRqRQp3sjTMraBc9A/PKbN/u5mv2eRwAjMQF9PyC7bJ0VvlEG4oJx1z1b96pFeuWgUa1wuwvtcjQxQfSrpqaAA6mIdq6Zdv28qhB6B1y0kVYsE4WfzR2JEGIEB+hvquLrDw==
+
+[gpg]
+format = ssh
+
+[gpg "ssh"]
+allowedSignersFile = /home/anon/.config/git/allowed_signers
+{{ if eq .chezmoi.os "darwin" -}}
+program = "/applications/1password.app/contents/macos/op-ssh-sign"
+{{ else if eq .chezmoi.os "linux" -}}
+{{ if (.chezmoi.kernel.osrelease | lower | contains "microsoft") -}}
+program = "/mnt/c/Users/Matt/AppData/Local/1Password/app/8/op-ssh-sign-wsl"
+{{ else -}}
+program = "/opt/1Password/op-ssh-sign"
+{{ end }}
+{{- end }}
+[commit]
+gpgsign = true
+
+[sendemail]
+smtpserver = smtp.gmail.com
+smtpuser = {{ onepasswordRead "op://Personal/Email/username" }}
+smtppass = {{ onepasswordRead "op://Personal/Email/password" }}
+smtpencryption = tls
+smtpserverport = 587
+confirm = auto
+
+[alias]
+c = clone --recursive --depth 1
+r = reset --hard
+wta = worktree add
+wtl = worktree list
+wtr = worktree remove
+
+[init]
+defaultBranch = main
+
+[core]
+editor = nvim
+autocrlf = false
+pager = delta
+{{ if (and (ne .chezmoi.os "linux") (ne .chezmoi.os "darwin")) }}
+sshCommand = C:/Windows/System32/OpenSSH/ssh.exe
+{{ else if eq .chezmoi.os "linux" -}}
+  {{ if (.chezmoi.kernel.osrelease | lower | contains "microsoft") -}}
+sshCommand = "/mnt/c/Windows/System32/OpenSSH/ssh.exe"
+  {{ end }}
+{{- end }}
+[interactive]
+diffFilter = delta --color-only
+
+[push]
+autoSetupRemote = true
+
+[delta]
+navigate = true  # use n and N to move between diff sections
+dark = true
+side-by-side = true
+
+[diff]
+tool = nvim
+algorithm = histogram
+
+[difftool "nvim"]
+cmd = nvim -d "$LOCAL" "$REMOTE" -c "CodeDiff"
+
+[difftool]
+prompt = false
+
+[merge]
+tool = vscode-diff
+
+[mergetool "vscode-diff"]
+cmd = nvim "$MERGED" -c 'CodeDiff merge "$MERGED"'
+
+[filter "lfs"]
+process = git-lfs filter-process
+required = true
+clean = git-lfs clean -- %f
+smudge = git-lfs smudge -- %f
+
+# Redirects
+[url "git@{{ onepasswordRead "op://Work/Work/org lower" }}.github.com:{{ onepasswordRead "op://Work/Work/org lower" }}/"]
+insteadOf = git@github.com:{{ onepasswordRead "op://Work/Work/org lower" }}/
+
+# Providers
+[includeIf "hasconfig:remote.*.url:git@gitlab.com:{{ onepasswordRead "op://Work/Work/org lower" }}/**"]
+path = ~/.gitconfig_work
+
+[includeIf "hasconfig:remote.*.url:git@ssh.dev.azure.com:v*/{{ onepasswordRead "op://Work/Work/org upper" }}/**"]
+path = ~/.gitconfig_work
+
+[includeIf "hasconfig:remote.*.url:git@{{ onepasswordRead "op://Work/Work/org lower" }}.github.com:*/**"]
+path = ~/.gitconfig_work

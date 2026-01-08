@@ -1,0 +1,8 @@
+# [install.scopes."@capability-kit"]
+# url = "https://pkgs.dev.azure.com/{{ onepasswordRead "op://Work/Work/org upper" }}/_packaging/{{ onepasswordRead "op://Work/Work/org upper" }}/npm/registry/"
+# username = "{{ onepasswordRead "op://Work/Work/id email" }}"
+# password = "{{ onepasswordRead "op://Work/azure-devops/credential" }}"
+
+[install.scopes."@{{ onepasswordRead "op://Work/Work/org lower" }}"]
+url = "https://npm.pkg.github.com"
+token = "{{ onepasswordRead "op://Work/GitHub/token" }}"

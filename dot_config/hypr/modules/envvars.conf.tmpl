@@ -1,0 +1,21 @@
+env = CLUTTER_BACKEND,wayland
+env = ELECTRON_OZONE_PLATFORM_HINT,wayland
+env = GDK_BACKEND,wayland,x11,*
+env = HYPRCURSOR_SIZE,24
+env = QT_QPA_PLATFORM,wayland;xcb
+env = QT_QPA_PLATFORMTHEME,kde
+env = SDL_VIDEODRIVER,wayland
+env = GDK_SCALE,1
+env = XCURSOR_SIZE,24
+env = XDG_CURRENT_DESKTOP,Hyprland
+env = XDG_SESSION_DESKTOP,Hyprland
+env = XDG_SESSION_TYPE,wayland
+{{- if eq .chezmoi.hostname "anon" }}
+env = ENABLE_HDR_WSI,1
+env = GBM_BACKEND,nvidia-drm
+env = LIBVA_DRIVER_NAME,nvidia
+env = NVD_BACKEND,direct
+env = __GLX_VENDOR_LIBRARY_NAME,nvidia
+env = __GL_GSYNC_ALLOWED,1
+env = __GL_VRR_ALLOWED,1
+{{- end }}

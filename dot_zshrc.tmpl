@@ -1,0 +1,252 @@
+# Load and cache completions for quick startup
+autoload -Uz compinit && compinit -C
+
+# ZInit
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
+[ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+source "${ZINIT_HOME}/zinit.zsh"
+
+# Add in zsh plugins
+zinit light zsh-users/zsh-syntax-highlighting
+zinit light zsh-users/zsh-completions
+zinit light zsh-users/zsh-autosuggestions
+zinit light Aloxaf/fzf-tab
+
+# Add in snippets
+zinit snippet OMZP::git
+zinit snippet OMZP::sudo
+zinit snippet OMZP::aws
+zinit snippet OMZP::kubectl
+zinit snippet OMZP::kubectx
+{{- if eq .chezmoi.os "linux" }}
+zinit snippet OMZP::archlinux
+zinit snippet OMZP::command-not-found
+{{- end }}
+
+# Paths
+for dir in \
+  "$HOME/go/bin" \
+  "$HOME/.bun/bin" \
+  "$HOME/.cargo/bin" \
+  "$HOME/.dotnet" \
+  "$HOME/.dotnet/tools" \
+  "$HOME/.dotnet/roslyn" \
+  "$HOME/.dotnet/netcoredbg" \
+  "$HOME/.local/bin" \
+  "$HOME/.local/bin/codelldb/extension/adapter" \
+  "$HOME/.pulumi/bin" \
+  "$HOME/.local/share/JetBrains/Toolbox/scripts" \
+  "$HOME/dev/github/steam-achievement-manager/target/release" \
+{{- if eq .chezmoi.os "darwin" }}
+  "$HOME/.rustup/toolchains/stable-aarch64-apple-darwin/bin"
+{{- else if eq .chezmoi.os "linux" }}
+  "$HOME/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin"
+{{- end }}
+do
+  [ -d "$dir" ] && export PATH="$PATH:$dir"
+done
+
+# Aliases/Funcs
+alias awsl='aws sso login --sso-session {{ onepasswordRead "op://Work/Work/org lower" }}'
+alias azl='az login --scope https://graph.microsoft.com/.default --allow-no-subscriptions'
+alias c='clear'
+alias grep='grep --color'
+alias lg='lazygit'
+alias ll='eza -lhg'
+alias lla='eza -alhg'
+alias ls='eza'
+alias n='nvim'
+alias q='exit'
+alias t='zellij'
+alias tree='eza --tree'
+{{- if eq .chezmoi.os "linux" }}
+alias hypr='start-hyprland'
+alias hyprland='start-hyprland'
+alias kde='startplasma-wayland'
+alias cosmic='start-cosmic'
+alias plasma='startplasma-wayland'
+alias wpwsh='WINEDEBUG=-all wine pwsh'
+alias wnvim='WINEDEBUG=-all wine nvim'
+alias wgu='sudo systemctl start wg-quick@Home'
+alias wgd='sudo systemctl stop wg-quick@Home'
+alias wgudsm='sudo wg-quick up dsm'
+alias wgddsm='sudo wg-quick down dsm'
+alias {{ onepasswordRead "op://Work/Work/org lower" }}='proxychains -f ~/.config/proxychains/proxychains.conf'
+alias oc='opencode'
+alias bios='systemctl reboot --firmware-setup'
+alias kctlnvim='pushd $HOME/.local/share/nvim/lazy/kubectl.nvim; make build_go && cargo build --release --features kube/socks5; popd'
+{{- end }}
+{{- if eq .chezmoi.hostname "nona" }}
+alias nmr='nmcli radio wifi off && nmcli radio wifi on'
+alias keys='sudo -e /etc/keyd/default.conf && sudo systemctl restart keyd'
+{{- end }}
+
+# Functions
+{{- if eq .chezmoi.os "linux" }}
+rwaybar() {
+    killall waybar &>/dev/null
+    setsid waybar >/dev/null 2>&1 < /dev/null &
+}
+
+wineaudio() {
+    local winedir="/opt/wines/wine-staging-9.21/usr/bin"
+    local wineprefix="$HOME/.local/share/wineprefixes/audio"
+    PATH="$winedir:$PATH" WINEPREFIX="$wineprefix" wine "$@"
+}
+
+wineaudiosync() {
+    local winedir="/opt/wines/wine-staging-9.21/usr/bin"
+    local wineprefix="$HOME/.local/share/wineprefixes/audio"
+    PATH="$winedir:$PATH" WINEPREFIX="$wineprefix" yabridgectl sync --prune
+}
+
+wineaudioreaper() {
+    local winedir="/opt/wines/wine-staging-9.21/usr/bin"
+    local wineprefix="$HOME/.local/share/wineprefixes/audio"
+    local buffer_size="${1:-128}"
+    local sample_rate="${2:-44100}"
+
+    if (( buffer_size < 64 || buffer_size > 1024 )); then
+        echo "Error: buffer_size ($buffer_size) must be between 32 and 1024" >&2
+        return 1
+    fi
+
+    PATH="$winedir:$PATH" WINEPREFIX="$wineprefix" PIPEWIRE_LATENCY="${buffer_size}/${sample_rate}" reaper
+}
+{{- end }}
+
+cleanlocks() {
+  find . -type f \
+    \( \
+      -name 'package-lock.json' \
+      -o -name 'packages.lock.json' \
+      -o -name 'bun.lock' \
+      -o -name 'bun.lockb' \
+      -o -name 'yarn.lock' \
+      -o -name 'pnpm-lock.yaml' \
+      -o -name 'composer.lock' \
+      -o -name 'Cargo.lock' \
+      -o -name 'Gemfile.lock' \
+      -o -name 'Pipfile.lock' \
+      -o -name 'poetry.lock' \
+      -o -name 'go.sum' \
+      -o -name 'pubspec.lock' \
+      -o -name 'mix.lock' \
+      -o -name 'requirements.lock' \
+    \) -exec rm -f {} +
+
+  echo "All known lock files deleted recursively"
+}
+
+nvs() {
+{{- if eq .chezmoi.os "darwin" }}
+    bash "$HOME/.config/nvim/setup/mac/setup.sh"
+{{ else if eq .chezmoi.os "linux" }}
+    bash "$HOME/.config/nvim/setup/linux/setup_arch.sh"
+{{ else }}
+    echo "Unsupported platform"
+{{ end -}}
+}
+
+isoflash() {
+    if [[ -z "$1" ]]; then
+        echo "Usage: isoflash path/to/iso [drive] [block size]"
+        return 1
+    fi
+
+    local iso="$1"
+    if [[ ! -f "$iso" ]]; then
+        echo "Error: ISO file '$iso' not found"
+        return 1
+    fi
+
+    local drive="${2:-/dev/sda}"
+    # Verify the drive is a valid block device
+    if [[ ! -b "$drive" ]]; then
+        echo "Error: Drive '$drive' not found or is not a block device"
+        return 1
+    fi
+
+    local bs="${3:-1M}"
+    sudo dd if="$iso" of="$drive" bs="$bs" oflag=sync status=progress
+
+}
+
+sln() {
+    if [[ -z "$1" ]]; then
+        echo "Provide SLN name"
+        return 1
+    fi
+
+    local name="$1"
+    dotnet new sln -n "$name"
+
+    find . -type f -name "*.csproj" | while read proj; do
+        dotnet sln "$name.sln" add "$proj"
+    done
+}
+
+nvmon() {
+    # NVM
+    source /usr/share/nvm/init-nvm.sh
+    autoload -U add-zsh-hook
+    load-nvmrc() {
+      local node_version="$(nvm version)"
+      local nvmrc_path="$(nvm_find_nvmrc)"
+
+      if [ -n "$nvmrc_path" ]; then
+        local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+
+        if [ "$nvmrc_node_version" = "N/A" ]; then
+          nvm install
+        elif [ "$nvmrc_node_version" != "$node_version" ]; then
+          nvm use
+        fi
+      elif [ "$node_version" != "$(nvm version default)" ]; then
+        echo "Reverting to nvm default version"
+        nvm use default
+      fi
+    }
+    add-zsh-hook chpwd load-nvmrc
+    load-nvmrc
+}
+
+# Integrations
+{{- if eq .chezmoi.os "darwin" }}
+eval "$(/opt/homebrew/bin/brew shellenv)"
+{{- end }}
+eval "$(atuin init zsh)"
+eval "$(fzf --zsh)"
+eval "$(zoxide init zsh)"
+eval "$(starship init zsh)"
+## eval "$(jira completion zsh)"
+eval "$(direnv hook zsh)"
+eval "$(gh completion -s zsh)"
+eval "$(op completion zsh)"; compdef _op op
+
+zinit cdreplay -q
+
+# Bindings
+bindkey -v
+bindkey '^p' history-search-backward
+bindkey '^n' history-search-forward
+bindkey '^[w' kill-region
+
+setopt autocd
+
+# History
+setopt appendhistory
+setopt sharehistory
+setopt hist_ignore_space
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
+
+# Completion styling
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':completion:*' menu no
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'

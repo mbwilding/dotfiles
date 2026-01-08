@@ -1,0 +1,13 @@
+README.md
+
+{{- if ne .chezmoi.os "linux" }}
+.clap
+.credentials
+.vst
+.vst3
+mount.sh
+{{- end }}
+
+{{- if ne .chezmoi.os "darwin" }}
+.hammerspoon
+{{- end }}

@@ -1,0 +1,57 @@
+# See https://wiki.hyprland.org/Configuring/Workspace-Rules/
+{{- if eq .chezmoi.hostname "anon" }}
+workspace = defaultName:Main,   name:main,   monitor:HDMI-A-1, default:true, layoutopt:orientation:left, persistent:true
+workspace = defaultName:Social, name:social, monitor:DP-2,     default:true, layoutopt:orientation:top,  persistent:true
+workspace = defaultName:Spare,  name:spare,  monitor:DP-1,     default:true, layoutopt:orientation:top,  persistent:true
+
+windowrule {
+  name = SuppressMaximize
+  suppress_event = maximize
+  match:class = .*
+}
+
+windowrule {
+  name = IdleInhibitFullscreen
+  idle_inhibit = fullscreen
+  match:class = .*
+}
+
+windowrule {
+  name = UnrealEngine
+  workspace = main
+  no_anim = on
+  no_initial_focus = on
+  match:class = ^(UnrealEditor)$
+  match:title = ^\w*$
+}
+
+windowrule {
+    name = Teams
+    workspace = social
+    match:class = teams-for-linux
+}
+
+windowrule {
+    name = Teams
+    workspace = social
+    match:class = teams-for-linux
+}
+
+windowrule {
+    name = Spotify
+    workspace = social
+    match:class = spotify
+}
+
+windowrule {
+    name = Discord
+    workspace = social
+    match:class = discord
+}
+{{- end }}
+{{- if eq .chezmoi.hostname "nona" }}
+workspace = defaultName: Main, name:main, monitor:eDP-1, default:true, layoutopt:orientation:left
+{{- end }}
+
+# Set mouse to center monitor
+exec-once = hyprctl dispatch workspace main

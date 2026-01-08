@@ -1,0 +1,71 @@
+ecosystem {
+    no_update_news = true
+    no_donation_nag = true
+}
+
+general {
+    # dwindle
+    layout = scrolling
+
+    gaps_in = 4.0
+    gaps_out = 8.0
+
+    border_size = 2
+
+    # https://wiki.hyprland.org/Configuring/Variables/#variable-types for info about colors
+    col.active_border = rgba(4eade5ee)
+    col.inactive_border = rgba(787878ee)
+
+    # Set to true enable resizing windows by clicking and dragging on borders and gaps
+    resize_on_border = true
+
+    # Please see https://wiki.hyprland.org/Configuring/Tearing/ before you turn this on
+    allow_tearing = false
+}
+
+dwindle {
+    pseudotile = true
+    preserve_split = true
+}
+
+debug {
+    full_cm_proto = false
+}
+
+# https://wiki.hyprland.org/Configuring/Variables/#decoration
+decoration {
+    rounding = 10
+
+    # Change transparency of focused and unfocused windows
+    active_opacity = 1.0
+    inactive_opacity = 1.0
+
+    # https://wiki.hyprland.org/Configuring/Variables/#blur
+    blur {
+        enabled = false
+        size = 3
+        passes = 1
+
+        vibrancy = 0.1696
+    }
+}
+
+master {
+    new_status = master
+}
+
+misc {
+    force_default_wallpaper = 0
+    disable_hyprland_logo = true
+    disable_splash_rendering = true
+    background_color = 0x000000
+    vfr = true
+}
+
+render {
+    send_content_type = true
+    direct_scanout = 1
+    cm_fs_passthrough = 1 # This may cause blown out colors
+    cm_auto_hdr = 2
+    new_render_scheduling = false
+}
