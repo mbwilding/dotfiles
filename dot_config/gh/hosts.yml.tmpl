@@ -2,5 +2,7 @@ github.com:
     git_protocol: ssh
     users:
         mbwilding:
+            oauth_token: {{ onepasswordRead "op://Personal/wk25sxx6lghrbgfopekvklxaxi/token" }}
         {{ onepasswordRead "op://Work/GitHub/username" }}:
+            oauth_token: {{ onepasswordRead "op://Work/GitHub/token" }}
     user: {{ onepasswordRead "op://Work/GitHub/username" }}
