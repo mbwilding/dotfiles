@@ -3,16 +3,11 @@
   <packageSources>
     <add key="nuget.org" value="https://api.nuget.org/v3/index.json" protocolVersion="3" />
     <add key="github" value="https://nuget.pkg.github.com/{{ onepasswordRead "op://Work/Work/org lower" }}/index.json" />
-    <!-- <add key="azdo" value="https://pkgs.dev.azure.com/{{ onepasswordRead "op://Work/Work/org upper" }}/_packaging/{{ onepasswordRead "op://Work/Work/org upper" }}/nuget/v3/index.json" /> -->
   </packageSources>
   <packageSourceCredentials>
     <github>
       <add key="Username" value="{{ onepasswordRead "op://Work/GitHub/username" }}" />
       <add key="ClearTextPassword" value="{{ onepasswordRead "op://Work/GitHub/token" }}" />
     </github>
-    <!-- <azdo> -->
-    <!--   <add key="Username" value="{{ onepasswordRead "op://Work/Work/id email" }}" /> -->
-    <!--   <add key="ClearTextPassword" value="{{ onepasswordRead "op://Work/azure-devops/credential" }}" /> -->
-    <!-- </azdo> -->
   </packageSourceCredentials>
 </configuration>
