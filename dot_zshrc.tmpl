@@ -76,6 +76,8 @@ alias {{ onepasswordRead "op://Work/Work/org lower" }}='proxychains -f ~/.config
 alias oc='opencode'
 alias bios='systemctl reboot --firmware-setup'
 alias kctlnvim='pushd $HOME/.local/share/nvim/lazy/kubectl.nvim; make build_go && cargo build --release --features kube/socks5; popd'
+alias ghp='export GITHUB_TOKEN=$GITHUB_TOKEN_PERSONAL'
+alias ghw='export GITHUB_TOKEN=$GITHUB_TOKEN_WORK'
 {{- end }}
 {{- if eq .chezmoi.hostname "nona" }}
 alias nmr='nmcli radio wifi off && nmcli radio wifi on'
