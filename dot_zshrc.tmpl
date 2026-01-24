@@ -77,7 +77,6 @@ alias wgddsm='sudo wg-quick down dsm'
 alias {{ onepasswordRead "op://Work/Work/org lower" }}='proxychains -f ~/.config/proxychains/proxychains.conf'
 alias oc='opencode'
 alias bios='systemctl reboot --firmware-setup'
-alias kctlnvim='pushd $HOME/.local/share/nvim/lazy/kubectl.nvim; make build_go && cargo build --release --features kube/socks5; popd'
 {{- end }}
 {{- if eq .chezmoi.hostname "nona" }}
 alias nmr='nmcli radio wifi off && nmcli radio wifi on'
@@ -86,11 +85,6 @@ alias keys='sudo -e /etc/keyd/default.conf && sudo systemctl restart keyd'
 
 # Functions
 {{- if eq .chezmoi.os "linux" }}
-rwaybar() {
-    killall waybar &>/dev/null
-    setsid waybar >/dev/null 2>&1 < /dev/null &
-}
-
 wineaudio() {
     local winedir="/opt/wines/wine-staging-9.21/usr/bin"
     local wineprefix="$HOME/.local/share/wineprefixes/audio"
