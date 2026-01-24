@@ -1,41 +1,41 @@
 export LANG=en_AU.UTF-8
 export LC_ALL=en_AU.UTF-8
-export EDITOR="nvim"
 export XDG_CONFIG_HOME="$HOME/.config"
+
+export EDITOR="nvim"
 export MANPAGER="nvim +Man!"
 export MANWIDTH="999"
-export ADO_PAT="{{ onepasswordRead "op://Work/azure-devops/credential" }}"
+
+export RUST_LOG="info"
 export AWS_PROFILE="md"
 export AWS_REGION="ap-southeast-2"
-export RUST_LOG="info"
-export ANTHROPIC_API_KEY="{{ onepasswordRead "op://Personal/Anthropic/token" }}"
-export AZP_TOKEN="{{ onepasswordRead "op://Work/azure-devops/credential" }}"
-export CARGO_REGISTRY_TOKEN="{{ onepasswordRead "op://Personal/cargo/token" }}"
-export DEEPSEEK_API_KEY="{{ onepasswordRead "op://Personal/deepseek/credential" }}"
-export OPENAI_API_KEY="{{ onepasswordRead "op://Personal/openai/api key" }}"
+
+export PULUMI_CONFIG_PASSPHRASE=""
+
 export DOTNET_ASPIRE_CONTAINER_RUNTIME="podman"
 export DOTNET_CLI_TELEMETRY_OPTOUT="1"
-export GH_PAT="{{ onepasswordRead "op://Work/GitHub/token" }}"
-export GITHUB_TOKEN_WORK="{{ onepasswordRead "op://Work/GitHub/token" }}"
+
+export JIRA_API_TOKEN="{{ onepasswordRead "op://Work/b7ewaa5m4yd3tdjhqgdqh3iywu/credential" }}"
+export JIRA_DOMAIN="{{ onepasswordRead "op://Work/wncpsqiuomufjfp3de5a5i62ja/org lower" }}.atlassian.net"
+export JIRA_HOST="https://{{ onepasswordRead "op://Work/wncpsqiuomufjfp3de5a5i62ja/org lower" }}.atlassian.net"
+export JIRA_USER="{{ onepasswordRead "op://Work/wncpsqiuomufjfp3de5a5i62ja/id email" }}"
+
+export AZP_TOKEN="{{ onepasswordRead "op://Work/apoooazrwiju4p7rlw25f3wvnq/credential" }}"
+export GH_PAT="{{ onepasswordRead "op://Work/ela74q3bqzotgmgn6r3stz73ca/token" }}"
+export GITLAB_TOKEN="{{ onepasswordRead "op://Work/fse6gaejmqqmgrm2wgbko6spiu/token" }}"
 export GITHUB_TOKEN_PERSONAL="{{ onepasswordRead "op://Personal/wk25sxx6lghrbgfopekvklxaxi/token" }}"
-export GITLAB_TOKEN="{{ onepasswordRead "op://Work/GitLab/token" }}"
-export JIRA_API_TOKEN="{{ onepasswordRead "op://Work/jira/credential" }}"
-export JIRA_DOMAIN="{{ onepasswordRead "op://Work/Work/org lower" }}.atlassian.net"
-export JIRA_HOST="https://{{ onepasswordRead "op://Work/Work/org lower" }}.atlassian.net"
-export JIRA_USER="{{ onepasswordRead "op://Work/Work/id email" }}"
-export OPENAI_API_KEY="{{ onepasswordRead "op://Personal/openai/api key" }}"
-export PULUMI_ACCESS_TOKEN="{{ onepasswordRead "op://Personal/pulumi/token" }}"
-export PULUMI_CONFIG_PASSPHRASE=""
-export WEATHER_API_TOKEN="{{ onepasswordRead "op://Personal/www.weatherapi.com/token" }}"
-export ELEVENLABS_API_KEY="{{ onepasswordRead "op://Personal/ElevenLabs/token" }}"
-export STEAM_API_KEY="{{ onepasswordRead "op://Personal/Steam/credential" }}"
-export DYNAMICS_URL="{{ onepasswordRead "op://Work/Dynamics/dev_url" }}"
-export DYNAMICS_CLIENT_ID="{{ onepasswordRead "op://Work/Dynamics/dev_client_id" }}"
-export DYNAMICS_CLIENT_SECRET="{{ onepasswordRead "op://Work/Dynamics/dev_client_secret" }}"
-export DYNAMICS_DEV_URL="{{ onepasswordRead "op://Work/Dynamics/dev_url" }}"
-export DYNAMICS_DEV_CLIENT_ID="{{ onepasswordRead "op://Work/Dynamics/dev_client_id" }}"
-export DYNAMICS_DEV_CLIENT_SECRET="{{ onepasswordRead "op://Work/Dynamics/dev_client_secret" }}"
-{{- if eq .chezmoi.os "linux" }}
+export GITHUB_TOKEN_WORK="{{ onepasswordRead "op://Work/ela74q3bqzotgmgn6r3stz73ca/token" }}"
+
+export CARGO_REGISTRY_TOKEN="{{ onepasswordRead "op://Personal/juxv3lubmlzta27fs7h6qqhfvm/token" }}"
+export ELEVENLABS_API_KEY="{{ onepasswordRead "op://Personal/ga2zhoelehybeje7ddbpuyl4be/token" }}"
+export PULUMI_ACCESS_TOKEN="{{ onepasswordRead "op://Personal/my5swvdfpgphfqdggd7jep2wua/token" }}"
+export STEAM_API_KEY="{{ onepasswordRead "op://Personal/phz3xzmqi3ckqq4gmmjgyqjtkq/credential" }}"
+export WEATHER_API_TOKEN="{{ onepasswordRead "op://Personal/6rbwngv4qmkl3cnafq4k33joi4/token" }}"
+
+export ANTHROPIC_API_KEY="{{ onepasswordRead "op://Personal/qivkkinlkl4dra4s7gj6fixbgy/token" }}"
+export DEEPSEEK_API_KEY="{{ onepasswordRead "op://Personal/3tnvgxs6xwg4qtfqvlcgtdbfgm/credential" }}"
+export OPENAI_API_KEY="{{ onepasswordRead "op://Personal/gg6yxvjaibaotxmspulrt7jk3q/api key" }}"
+{{ if eq .chezmoi.os "linux" }}
 export ELECTRON_OZONE_PLATFORM_HINT="wayland"
 # export SDL_VIDEODRIVER=wayland
 # export QT_QPA_PLATFORM="wayland"
