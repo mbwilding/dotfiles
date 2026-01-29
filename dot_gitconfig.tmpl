@@ -40,10 +40,6 @@ autocrlf = false
 pager = delta
 {{ if (and (ne .chezmoi.os "linux") (ne .chezmoi.os "darwin")) }}
 sshCommand = C:/Windows/System32/OpenSSH/ssh.exe
-{{ else if eq .chezmoi.os "linux" -}}
-  {{ if (.chezmoi.kernel.osrelease | lower | contains "microsoft") -}}
-sshCommand = "/mnt/c/Windows/System32/OpenSSH/ssh.exe"
-  {{ end }}
 {{- end }}
 [interactive]
 diffFilter = delta --color-only
