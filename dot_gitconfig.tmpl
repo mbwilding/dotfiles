@@ -85,5 +85,8 @@ path = ~/.gitconfig_work
 [includeIf "hasconfig:remote.*.url:git@ssh.dev.azure.com:v*/{{ onepasswordRead "op://Work/Work/org upper" }}/**"]
 path = ~/.gitconfig_work
 
-[includeIf "hasconfig:remote.*.url:git@{{ onepasswordRead "op://Work/Work/org lower" }}.github.com:*/**"]
+[includeIf "hasconfig:remote.*.url:git@github.com:{{ onepasswordRead "op://Work/Work/org lower" }}/**"]
+path = ~/.gitconfig_work
+
+[includeIf "hasconfig:remote.*.url:git@{{ onepasswordRead "op://Work/Work/org lower" }}.github.com:{{ onepasswordRead "op://Work/Work/org lower" }}/**"]
 path = ~/.gitconfig_work
