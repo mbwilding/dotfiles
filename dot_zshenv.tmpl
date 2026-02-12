@@ -35,6 +35,7 @@ export WEATHER_API_TOKEN="{{ onepasswordRead "op://Personal/6rbwngv4qmkl3cnafq4k
 export ANTHROPIC_API_KEY="{{ onepasswordRead "op://Personal/qivkkinlkl4dra4s7gj6fixbgy/token" }}"
 export DEEPSEEK_API_KEY="{{ onepasswordRead "op://Personal/3tnvgxs6xwg4qtfqvlcgtdbfgm/credential" }}"
 export OPENAI_API_KEY="{{ onepasswordRead "op://Personal/gg6yxvjaibaotxmspulrt7jk3q/api key" }}"
+export GEMINI_API_KEY="{{ onepasswordRead "op://Personal/4pt7b4zuyer2ceek2zkcf4zd44/api key" }}"
 {{ if eq .chezmoi.os "linux" }}
 export ELECTRON_OZONE_PLATFORM_HINT="wayland"
 # export SDL_VIDEODRIVER=wayland
